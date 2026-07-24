@@ -1774,9 +1774,10 @@ export class DocumentApi {
      * @summary Download the document.
      * @param documentId 
      * @param onBehalfOf 
+     * @param format 
      * @param options
      */
-    public async downloadDocument (documentId: string, onBehalfOf?: string, options: optionsI = {headers: {}}) : Promise<Buffer> {
+    public async downloadDocument (documentId: string, onBehalfOf?: string, format?: 'Combined' | 'Individually', options: optionsI = {headers: {}}) : Promise<Buffer> {
         const localVarPath = this.basePath + '/v1/document/download';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1801,6 +1802,10 @@ export class DocumentApi {
 
         if (onBehalfOf !== undefined) {
             localVarQueryParameters['onBehalfOf'] = ObjectSerializer.serialize(onBehalfOf, "string");
+        }
+
+        if (format !== undefined) {
+            localVarQueryParameters['format'] = ObjectSerializer.serialize(format, "'Combined' | 'Individually'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);

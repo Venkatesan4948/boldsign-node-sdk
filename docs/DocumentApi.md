@@ -474,7 +474,7 @@ Download the audit trail document.
 ## `downloadDocument()`
 
 ```typescript
-downloadDocument(documentId: string, onBehalfOf: string): Buffer
+downloadDocument(documentId: string, onBehalfOf: string, format: 'Combined' | 'Individually'): Buffer
 ```
 
 Download the document.
@@ -486,6 +486,7 @@ Download the document.
 | ------------- | ------------- | ------------- | ------------- |
 | **documentId** | **string**|  | |
 | **onBehalfOf** | **string**|  | [optional] |
+| **format** | **'Combined' | 'Individually'**|  | [optional] |
 
 ### Return type
 

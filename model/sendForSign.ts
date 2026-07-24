@@ -273,7 +273,8 @@ export namespace SendForSign {
     }
     export enum DocumentDownloadOptionEnum {
         Combined = <any> 'Combined',
-        Individually = <any> 'Individually'
+        Individually = <any> 'Individually',
+        UserPreference = <any> 'UserPreference'
     }
     export enum AllowedSignatureTypesEnum {
         Text = <any> 'Text',

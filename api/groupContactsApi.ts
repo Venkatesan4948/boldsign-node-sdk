@@ -198,6 +198,14 @@ export class GroupContactsApi {
                         if (handleErrorCodeResponse(
                             reject,
                             error.response,
+                            403,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
                             400,
                             "ErrorResult",
                         )) {
@@ -678,6 +686,14 @@ export class GroupContactsApi {
                             reject,
                             error.response,
                             401,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            403,
                             "ErrorResult",
                         )) {
                           return;
