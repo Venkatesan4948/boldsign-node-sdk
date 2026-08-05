@@ -11,6 +11,7 @@
  */
 
 import { RequestFile } from './models';
+import { SenderIdentityCreator } from './senderIdentityCreator';
 
 export class SenderIdentityEvent {
     'object'?: string | null;
@@ -24,6 +25,8 @@ export class SenderIdentityEvent {
     'brandId'?: string | null;
     'redirectUrl'?: string | null;
     'metaData'?: { [key: string]: string | null; } | null;
+    'createdBy'?: SenderIdentityCreator;
+    'locale'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -82,6 +85,16 @@ export class SenderIdentityEvent {
             "name": "metaData",
             "baseName": "metaData",
             "type": "{ [key: string]: string | null; }"
+        },
+        {
+            "name": "createdBy",
+            "baseName": "createdBy",
+            "type": "SenderIdentityCreator"
+        },
+        {
+            "name": "locale",
+            "baseName": "locale",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {

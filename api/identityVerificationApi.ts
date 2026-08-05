@@ -94,7 +94,7 @@ export class IdentityVerificationApi {
     /**
      * 
      * @summary Generate a URL that embeds manual ID verification for the specified document signer into your application.
-     * @param documentId The document id.
+     * @param documentId 
      * @param embeddedFileDetails The embedded verification link request.
      * @param options
      */
@@ -223,7 +223,7 @@ export class IdentityVerificationApi {
     /**
      * 
      * @summary Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.
-     * @param documentId The document id.
+     * @param documentId 
      * @param downloadImageRequest The download image request.
      * @param options
      */
@@ -365,7 +365,7 @@ export class IdentityVerificationApi {
     /**
      * 
      * @summary Retrieve the ID verification report for the specified document signer.
-     * @param documentId The document id.
+     * @param documentId 
      * @param verificationDataRequest The download image request.
      * @param options
      */

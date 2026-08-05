@@ -85,14 +85,19 @@ All URIs are relative to *https://api.boldsign.com*
 | *DocumentApi* | [**addAuthentication**](./docs/DocumentApi.md#addauthentication) | **PATCH** /v1/document/addAuthentication | The add authentication to recipient. |
 | *DocumentApi* | [**addTag**](./docs/DocumentApi.md#addtag) | **PATCH** /v1/document/addTags | Add the Tags in Documents. |
 | *DocumentApi* | [**behalfDocuments**](./docs/DocumentApi.md#behalfdocuments) | **GET** /v1/document/behalfList | Gets the behalf documents. |
+| *DocumentApi* | [**cancelEditing**](./docs/DocumentApi.md#cancelediting) | **POST** /v1-beta/document/cancelEditing | Cancels editing for a document that is currently in edit-mode. |
 | *DocumentApi* | [**changeAccessCode**](./docs/DocumentApi.md#changeaccesscode) | **PATCH** /v1/document/changeAccessCode | Changes the access code for the given document signer. |
 | *DocumentApi* | [**changeRecipient**](./docs/DocumentApi.md#changerecipient) | **PATCH** /v1/document/changeRecipient | Change recipient details of a document. |
+| *DocumentApi* | [**createEmbeddedDocumentCloneUrl**](./docs/DocumentApi.md#createembeddeddocumentcloneurl) | **POST** /v1-beta/document/createEmbeddedCloneUrl | Generates a URL to embeds Clone document process into your application. |
+| *DocumentApi* | [**createEmbeddedEditUrl**](./docs/DocumentApi.md#createembeddedediturl) | **POST** /v1-beta/document/createEmbeddedEditUrl | Generates an embedded edit URL that allows the document editing process to be integrated into your application. |
 | *DocumentApi* | [**createEmbeddedRequestUrlDocument**](./docs/DocumentApi.md#createembeddedrequesturldocument) | **POST** /v1/document/createEmbeddedRequestUrl | Generates a send URL which embeds document sending process into your application. |
 | *DocumentApi* | [**deleteDocument**](./docs/DocumentApi.md#deletedocument) | **DELETE** /v1/document/delete | Delete the document. |
 | *DocumentApi* | [**deleteTag**](./docs/DocumentApi.md#deletetag) | **DELETE** /v1/document/deleteTags | Delete the Tags in Documents. |
 | *DocumentApi* | [**downloadAttachment**](./docs/DocumentApi.md#downloadattachment) | **GET** /v1/document/downloadAttachment | Download the Attachment. |
 | *DocumentApi* | [**downloadAuditLog**](./docs/DocumentApi.md#downloadauditlog) | **GET** /v1/document/downloadAuditLog | Download the audit trail document. |
 | *DocumentApi* | [**downloadDocument**](./docs/DocumentApi.md#downloaddocument) | **GET** /v1/document/download | Download the document. |
+| *DocumentApi* | [**draftSend**](./docs/DocumentApi.md#draftsend) | **POST** /v1-beta/document/draftSend | Sends a draft-status document out for signature. |
+| *DocumentApi* | [**editDocument**](./docs/DocumentApi.md#editdocument) | **PUT** /v1-beta/document/edit | Edit and updates an existing document. |
 | *DocumentApi* | [**extendExpiry**](./docs/DocumentApi.md#extendexpiry) | **PATCH** /v1/document/extendExpiry | Extends the expiration date of the document. |
 | *DocumentApi* | [**getProperties**](./docs/DocumentApi.md#getproperties) | **GET** /v1/document/properties | Get summary of the document. |
 | *DocumentApi* | [**getEmbeddedSignLink**](./docs/DocumentApi.md#getembeddedsignlink) | **GET** /v1/document/getEmbeddedSignLink | Get sign link for Embedded Sign. |
@@ -103,12 +108,18 @@ All URIs are relative to *https://api.boldsign.com*
 | *DocumentApi* | [**revokeDocument**](./docs/DocumentApi.md#revokedocument) | **POST** /v1/document/revoke | Revoke the document. |
 | *DocumentApi* | [**sendDocument**](./docs/DocumentApi.md#senddocument) | **POST** /v1/document/send | Sends the document for sign. |
 | *DocumentApi* | [**teamDocuments**](./docs/DocumentApi.md#teamdocuments) | **GET** /v1/document/teamlist | Get user Team documents. |
+| *GroupContactsApi* | [**createGroupContact**](./docs/GroupContactsApi.md#creategroupcontact) | **POST** /v1-beta/contactGroups/create | Create a new Group Contact. |
+| *GroupContactsApi* | [**deleteGroupContact**](./docs/GroupContactsApi.md#deletegroupcontact) | **DELETE** /v1-beta/contactGroups/delete | Deletes a Group Contact. |
+| *GroupContactsApi* | [**getGroupContact**](./docs/GroupContactsApi.md#getgroupcontact) | **GET** /v1-beta/contactGroups/get | Get Summary of the Group Contact. |
+| *GroupContactsApi* | [**groupContactList**](./docs/GroupContactsApi.md#groupcontactlist) | **GET** /v1-beta/contactGroups/list | List Group Contacts. |
+| *GroupContactsApi* | [**updateGroupContact**](./docs/GroupContactsApi.md#updategroupcontact) | **PUT** /v1-beta/contactGroups/update | Update the Group Contact. |
 | *IdentityVerificationApi* | [**createEmbeddedVerificationUrl**](./docs/IdentityVerificationApi.md#createembeddedverificationurl) | **POST** /v1/identityVerification/createEmbeddedVerificationUrl | Generate a URL that embeds manual ID verification for the specified document signer into your application. |
 | *IdentityVerificationApi* | [**image**](./docs/IdentityVerificationApi.md#image) | **POST** /v1/identityVerification/image | Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID. |
 | *IdentityVerificationApi* | [**report**](./docs/IdentityVerificationApi.md#report) | **POST** /v1/identityVerification/report | Retrieve the ID verification report for the specified document signer. |
 | *PlanApi* | [**apiCreditsCount**](./docs/PlanApi.md#apicreditscount) | **GET** /v1/plan/apiCreditsCount | Gets the Api credits details. |
 | *SenderIdentitiesApi* | [**createSenderIdentities**](./docs/SenderIdentitiesApi.md#createsenderidentities) | **POST** /v1/senderIdentities/create | Creates sender identity. |
 | *SenderIdentitiesApi* | [**deleteSenderIdentities**](./docs/SenderIdentitiesApi.md#deletesenderidentities) | **DELETE** /v1/senderIdentities/delete | Deletes sender identity. |
+| *SenderIdentitiesApi* | [**getSenderIdentityProperties**](./docs/SenderIdentitiesApi.md#getsenderidentityproperties) | **GET** /v1/senderIdentities/properties | Gets sender identity by ID or email. |
 | *SenderIdentitiesApi* | [**listSenderIdentities**](./docs/SenderIdentitiesApi.md#listsenderidentities) | **GET** /v1/senderIdentities/list | Lists sender identity. |
 | *SenderIdentitiesApi* | [**reRequestSenderIdentities**](./docs/SenderIdentitiesApi.md#rerequestsenderidentities) | **POST** /v1/senderIdentities/rerequest | Rerequests denied sender identity. |
 | *SenderIdentitiesApi* | [**resendInvitationSenderIdentities**](./docs/SenderIdentitiesApi.md#resendinvitationsenderidentities) | **POST** /v1/senderIdentities/resendInvitation | Resends sender identity invitation. |
@@ -118,7 +129,9 @@ All URIs are relative to *https://api.boldsign.com*
 | *TeamsApi* | [**listTeams**](./docs/TeamsApi.md#listteams) | **GET** /v1/teams/list | List Teams. |
 | *TeamsApi* | [**updateTeam**](./docs/TeamsApi.md#updateteam) | **PUT** /v1/teams/update | Update Team. |
 | *TemplateApi* | [**addTag**](./docs/TemplateApi.md#addtag) | **PATCH** /v1/template/addTags | Add the Tags in Templates. |
+| *TemplateApi* | [**createEmbeddedPreviewUrl**](./docs/TemplateApi.md#createembeddedpreviewurl) | **POST** /v1/template/createEmbeddedPreviewUrl | Generates a preview URL for a template to view it. |
 | *TemplateApi* | [**createEmbeddedRequestUrlTemplate**](./docs/TemplateApi.md#createembeddedrequesturltemplate) | **POST** /v1/template/createEmbeddedRequestUrl | Generates a send URL using a template which embeds document sending process into your application. |
+| *TemplateApi* | [**createEmbeddedTemplateCloneUrl**](./docs/TemplateApi.md#createembeddedtemplatecloneurl) | **POST** /v1-beta/template/createEmbeddedCloneUrl | Generates a URL to embeds Clone template process into your application. |
 | *TemplateApi* | [**createEmbeddedTemplateUrl**](./docs/TemplateApi.md#createembeddedtemplateurl) | **POST** /v1/template/createEmbeddedTemplateUrl | Generates a create URL to embeds template create process into your application. |
 | *TemplateApi* | [**createTemplate**](./docs/TemplateApi.md#createtemplate) | **POST** /v1/template/create | Creates a new template. |
 | *TemplateApi* | [**deleteTemplate**](./docs/TemplateApi.md#deletetemplate) | **DELETE** /v1/template/delete | Deletes a template. |
@@ -131,7 +144,9 @@ All URIs are relative to *https://api.boldsign.com*
 | *TemplateApi* | [**mergeAndSend**](./docs/TemplateApi.md#mergeandsend) | **POST** /v1/template/mergeAndSend | Send the document by merging multiple templates. |
 | *TemplateApi* | [**mergeCreateEmbeddedRequestUrlTemplate**](./docs/TemplateApi.md#mergecreateembeddedrequesturltemplate) | **POST** /v1/template/mergeCreateEmbeddedRequestUrl | Generates a merge request URL using a template that combines document merging and sending processes into your application. |
 | *TemplateApi* | [**sendUsingTemplate**](./docs/TemplateApi.md#sendusingtemplate) | **POST** /v1/template/send | Send a document for signature using a Template. |
+| *TemplateApi* | [**shareTemplate**](./docs/TemplateApi.md#sharetemplate) | **PATCH** /v1-beta/template/share | Share a template with teams and manage permissions. |
 | *UserApi* | [**cancelInvitation**](./docs/UserApi.md#cancelinvitation) | **POST** /v1/users/cancelInvitation | Cancel the users invitation. |
+| *UserApi* | [**changeTeam**](./docs/UserApi.md#changeteam) | **PUT** /v1-beta/users/changeTeam | Change users to other team. |
 | *UserApi* | [**createUser**](./docs/UserApi.md#createuser) | **POST** /v1/users/create | Create the user. |
 | *UserApi* | [**getUser**](./docs/UserApi.md#getuser) | **GET** /v1/users/get | Get summary of the user. |
 | *UserApi* | [**listUsers**](./docs/UserApi.md#listusers) | **GET** /v1/users/list | List user documents. |
@@ -152,12 +167,16 @@ All URIs are relative to *https://api.boldsign.com*
 - [BehalfDocument](./docs/BehalfDocument.md)
 - [BehalfDocumentRecords](./docs/BehalfDocumentRecords.md)
 - [BehalfOf](./docs/BehalfOf.md)
+- [BehalfOfWebhookModel](./docs/BehalfOfWebhookModel.md)
 - [BillingViewModel](./docs/BillingViewModel.md)
 - [BrandCreated](./docs/BrandCreated.md)
 - [BrandCustomFieldDetails](./docs/BrandCustomFieldDetails.md)
 - [BrandingMessage](./docs/BrandingMessage.md)
 - [BrandingRecords](./docs/BrandingRecords.md)
 - [ChangeRecipient](./docs/ChangeRecipient.md)
+- [ChangeTeamRequest](./docs/ChangeTeamRequest.md)
+- [CheckboxValidationSettings](./docs/CheckboxValidationSettings.md)
+- [CollaborationSettings](./docs/CollaborationSettings.md)
 - [ConditionalRule](./docs/ConditionalRule.md)
 - [ContactCreated](./docs/ContactCreated.md)
 - [ContactDetails](./docs/ContactDetails.md)
@@ -165,10 +184,12 @@ All URIs are relative to *https://api.boldsign.com*
 - [ContactsDetails](./docs/ContactsDetails.md)
 - [ContactsList](./docs/ContactsList.md)
 - [CreateContactResponse](./docs/CreateContactResponse.md)
+- [CreateGroupContactResponse](./docs/CreateGroupContactResponse.md)
 - [CreateSenderIdentityRequest](./docs/CreateSenderIdentityRequest.md)
 - [CreateTeamRequest](./docs/CreateTeamRequest.md)
 - [CreateTemplateRequest](./docs/CreateTemplateRequest.md)
 - [CreateUser](./docs/CreateUser.md)
+- [Creators](./docs/Creators.md)
 - [CustomDomainSettings](./docs/CustomDomainSettings.md)
 - [CustomFieldCollection](./docs/CustomFieldCollection.md)
 - [CustomFieldMessage](./docs/CustomFieldMessage.md)
@@ -179,10 +200,12 @@ All URIs are relative to *https://api.boldsign.com*
 - [DocumentCcDetails](./docs/DocumentCcDetails.md)
 - [DocumentCcWebhookModel](./docs/DocumentCcWebhookModel.md)
 - [DocumentCreated](./docs/DocumentCreated.md)
+- [DocumentEdited](./docs/DocumentEdited.md)
 - [DocumentEvent](./docs/DocumentEvent.md)
 - [DocumentExpirySettings](./docs/DocumentExpirySettings.md)
 - [DocumentFiles](./docs/DocumentFiles.md)
 - [DocumentFormFields](./docs/DocumentFormFields.md)
+- [DocumentGroupSignerWebhookModel](./docs/DocumentGroupSignerWebhookModel.md)
 - [DocumentInfo](./docs/DocumentInfo.md)
 - [DocumentProperties](./docs/DocumentProperties.md)
 - [DocumentReassign](./docs/DocumentReassign.md)
@@ -194,11 +217,21 @@ All URIs are relative to *https://api.boldsign.com*
 - [DocumentSignerWebhookModel](./docs/DocumentSignerWebhookModel.md)
 - [DocumentTags](./docs/DocumentTags.md)
 - [DownloadImageRequest](./docs/DownloadImageRequest.md)
+- [EditDocumentFile](./docs/EditDocumentFile.md)
+- [EditDocumentRequest](./docs/EditDocumentRequest.md)
+- [EditDocumentSigner](./docs/EditDocumentSigner.md)
+- [EditFormField](./docs/EditFormField.md)
 - [EditSenderIdentityRequest](./docs/EditSenderIdentityRequest.md)
 - [EditTemplateRequest](./docs/EditTemplateRequest.md)
 - [EditableDateFieldSettings](./docs/EditableDateFieldSettings.md)
+- [EmbeddedCloneDocumentJsonRequest](./docs/EmbeddedCloneDocumentJsonRequest.md)
+- [EmbeddedCloneTemplateJsonRequest](./docs/EmbeddedCloneTemplateJsonRequest.md)
+- [EmbeddedClonedDocument](./docs/EmbeddedClonedDocument.md)
+- [EmbeddedClonedTemplate](./docs/EmbeddedClonedTemplate.md)
 - [EmbeddedCreateTemplateRequest](./docs/EmbeddedCreateTemplateRequest.md)
 - [EmbeddedCustomFieldCreated](./docs/EmbeddedCustomFieldCreated.md)
+- [EmbeddedDocumentEditJsonRequest](./docs/EmbeddedDocumentEditJsonRequest.md)
+- [EmbeddedDocumentEdited](./docs/EmbeddedDocumentEdited.md)
 - [EmbeddedDocumentRequest](./docs/EmbeddedDocumentRequest.md)
 - [EmbeddedFileDetails](./docs/EmbeddedFileDetails.md)
 - [EmbeddedFileLink](./docs/EmbeddedFileLink.md)
@@ -209,21 +242,40 @@ All URIs are relative to *https://api.boldsign.com*
 - [EmbeddedTemplateCreated](./docs/EmbeddedTemplateCreated.md)
 - [EmbeddedTemplateEditRequest](./docs/EmbeddedTemplateEditRequest.md)
 - [EmbeddedTemplateEdited](./docs/EmbeddedTemplateEdited.md)
+- [EmbeddedTemplatePreview](./docs/EmbeddedTemplatePreview.md)
+- [EmbeddedTemplatePreviewJsonRequest](./docs/EmbeddedTemplatePreviewJsonRequest.md)
+- [ErrorResponse](./docs/ErrorResponse.md)
 - [ErrorResult](./docs/ErrorResult.md)
 - [ExistingFormField](./docs/ExistingFormField.md)
 - [ExtendExpiry](./docs/ExtendExpiry.md)
 - [FileInfo](./docs/FileInfo.md)
 - [Font](./docs/Font.md)
 - [FormField](./docs/FormField.md)
+- [FormFieldPermission](./docs/FormFieldPermission.md)
+- [FormFieldPermissionWebhookModel](./docs/FormFieldPermissionWebhookModel.md)
 - [FormGroup](./docs/FormGroup.md)
 - [FormulaFieldSettings](./docs/FormulaFieldSettings.md)
+- [GetGroupContactDetails](./docs/GetGroupContactDetails.md)
+- [GroupContact](./docs/GroupContact.md)
+- [GroupContactDetails](./docs/GroupContactDetails.md)
+- [GroupContactsList](./docs/GroupContactsList.md)
+- [GroupOption](./docs/GroupOption.md)
+- [GroupSigner](./docs/GroupSigner.md)
+- [GroupSignerSettings](./docs/GroupSignerSettings.md)
+- [GroupSignerSettingsWebhookModel](./docs/GroupSignerSettingsWebhookModel.md)
+- [GroupUser](./docs/GroupUser.md)
 - [IWebhookData](./docs/IWebhookData.md)
 - [IdDocument](./docs/IdDocument.md)
 - [IdReport](./docs/IdReport.md)
-- [IdVerification](./docs/IdVerification.md)
+- [IdVerificationDetails](./docs/IdVerificationDetails.md)
+- [IdVerificationSignerWebhookModel](./docs/IdVerificationSignerWebhookModel.md)
 - [IdentityVerificationEvent](./docs/IdentityVerificationEvent.md)
 - [IdentityVerificationSettings](./docs/IdentityVerificationSettings.md)
 - [ImageInfo](./docs/ImageInfo.md)
+- [KbaAuthenticationEvent](./docs/KbaAuthenticationEvent.md)
+- [KbaDetails](./docs/KbaDetails.md)
+- [KbaSettings](./docs/KbaSettings.md)
+- [KbaSignerWebhookModel](./docs/KbaSignerWebhookModel.md)
 - [MergeAndSendForSignForm](./docs/MergeAndSendForSignForm.md)
 - [ModelDate](./docs/ModelDate.md)
 - [ModelError](./docs/ModelError.md)
@@ -247,10 +299,13 @@ All URIs are relative to *https://api.boldsign.com*
 - [SendForSign](./docs/SendForSign.md)
 - [SendForSignFromTemplateForm](./docs/SendForSignFromTemplateForm.md)
 - [SenderIdentityCreated](./docs/SenderIdentityCreated.md)
+- [SenderIdentityCreator](./docs/SenderIdentityCreator.md)
 - [SenderIdentityEvent](./docs/SenderIdentityEvent.md)
 - [SenderIdentityList](./docs/SenderIdentityList.md)
 - [SenderIdentityViewModel](./docs/SenderIdentityViewModel.md)
+- [SignatureFrameSettings](./docs/SignatureFrameSettings.md)
 - [SignerAuthenticationSettings](./docs/SignerAuthenticationSettings.md)
+- [SignerAuthenticationWebhookModel](./docs/SignerAuthenticationWebhookModel.md)
 - [Size](./docs/Size.md)
 - [TeamCreated](./docs/TeamCreated.md)
 - [TeamDocumentRecords](./docs/TeamDocumentRecords.md)
@@ -265,19 +320,28 @@ All URIs are relative to *https://api.boldsign.com*
 - [TemplateCcWebhookModel](./docs/TemplateCcWebhookModel.md)
 - [TemplateCreated](./docs/TemplateCreated.md)
 - [TemplateEvent](./docs/TemplateEvent.md)
+- [TemplateFiles](./docs/TemplateFiles.md)
 - [TemplateFormFields](./docs/TemplateFormFields.md)
+- [TemplateGroupSigner](./docs/TemplateGroupSigner.md)
+- [TemplateGroupSignerWebhookModel](./docs/TemplateGroupSignerWebhookModel.md)
 - [TemplateProperties](./docs/TemplateProperties.md)
 - [TemplateRecords](./docs/TemplateRecords.md)
 - [TemplateRole](./docs/TemplateRole.md)
 - [TemplateSender](./docs/TemplateSender.md)
 - [TemplateSenderDetail](./docs/TemplateSenderDetail.md)
 - [TemplateSenderDetails](./docs/TemplateSenderDetails.md)
+- [TemplateShareErrorResponse](./docs/TemplateShareErrorResponse.md)
+- [TemplateShareRequest](./docs/TemplateShareRequest.md)
 - [TemplateSharedTemplateDetail](./docs/TemplateSharedTemplateDetail.md)
+- [TemplateSharing](./docs/TemplateSharing.md)
 - [TemplateSigner](./docs/TemplateSigner.md)
 - [TemplateSignerDetails](./docs/TemplateSignerDetails.md)
 - [TemplateTag](./docs/TemplateTag.md)
+- [TemplateTeamShare](./docs/TemplateTeamShare.md)
+- [TemplateTeamShareRequest](./docs/TemplateTeamShareRequest.md)
 - [TextTagDefinition](./docs/TextTagDefinition.md)
 - [TextTagOffset](./docs/TextTagOffset.md)
+- [UpdateGroupContact](./docs/UpdateGroupContact.md)
 - [UpdateUser](./docs/UpdateUser.md)
 - [UpdateUserMetaData](./docs/UpdateUserMetaData.md)
 - [UserPageDetails](./docs/UserPageDetails.md)
@@ -288,8 +352,9 @@ All URIs are relative to *https://api.boldsign.com*
 - [VerificationDataRequest](./docs/VerificationDataRequest.md)
 - [ViewBrandDetails](./docs/ViewBrandDetails.md)
 - [ViewCustomFieldDetails](./docs/ViewCustomFieldDetails.md)
+- [WebhookActorDetails](./docs/WebhookActorDetails.md)
+- [WebhookContext](./docs/WebhookContext.md)
 - [WebhookEvent](./docs/WebhookEvent.md)
-- [WebhookEventData](./docs/WebhookEventData.md)
 - [WebhookEventMetadata](./docs/WebhookEventMetadata.md)
 
 ## Authorization

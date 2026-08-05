@@ -13,7 +13,9 @@
 import { RequestFile } from './models';
 import { DocumentCC } from './documentCC';
 import { DocumentInfo } from './documentInfo';
+import { FormFieldPermission } from './formFieldPermission';
 import { FormGroup } from './formGroup';
+import { GroupSignerSettings } from './groupSignerSettings';
 import { RecipientNotificationSettings } from './recipientNotificationSettings';
 import { TemplateRole } from './templateRole';
 import { TextTagDefinition } from './textTagDefinition';
@@ -42,8 +44,13 @@ export class CreateTemplateRequest {
     'onBehalfOf'?: string | null;
     'labels'?: Array<string> | null;
     'templateLabels'?: Array<string> | null;
-    'recipientNotificationSettings'?: RecipientNotificationSettings;
     'formGroups'?: Array<FormGroup> | null;
+    'recipientNotificationSettings'?: RecipientNotificationSettings;
+    'allowedSignatureTypes'?: Array<CreateTemplateRequest.AllowedSignatureTypesEnum>;
+    'formFieldPermission'?: FormFieldPermission;
+    'groupSignerSettings'?: GroupSignerSettings;
+    'enableAllowSignEverywhere'?: boolean | null;
+    'documentTimeZone'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -164,14 +171,39 @@ export class CreateTemplateRequest {
             "type": "Array<string>"
         },
         {
+            "name": "formGroups",
+            "baseName": "formGroups",
+            "type": "Array<FormGroup>"
+        },
+        {
             "name": "recipientNotificationSettings",
             "baseName": "recipientNotificationSettings",
             "type": "RecipientNotificationSettings"
         },
         {
-            "name": "formGroups",
-            "baseName": "formGroups",
-            "type": "Array<FormGroup>"
+            "name": "allowedSignatureTypes",
+            "baseName": "allowedSignatureTypes",
+            "type": "Array<CreateTemplateRequest.AllowedSignatureTypesEnum>"
+        },
+        {
+            "name": "formFieldPermission",
+            "baseName": "formFieldPermission",
+            "type": "FormFieldPermission"
+        },
+        {
+            "name": "groupSignerSettings",
+            "baseName": "groupSignerSettings",
+            "type": "GroupSignerSettings"
+        },
+        {
+            "name": "enableAllowSignEverywhere",
+            "baseName": "enableAllowSignEverywhere",
+            "type": "boolean"
+        },
+        {
+            "name": "documentTimeZone",
+            "baseName": "documentTimeZone",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
@@ -179,3 +211,10 @@ export class CreateTemplateRequest {
     }
 }
 
+export namespace CreateTemplateRequest {
+    export enum AllowedSignatureTypesEnum {
+        Text = <any> 'Text',
+        Draw = <any> 'Draw',
+        Image = <any> 'Image'
+    }
+}

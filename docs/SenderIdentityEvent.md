@@ -17,5 +17,7 @@ Name | Type | Description | Notes
 | `brandId` | ```string``` |   |  |
 | `redirectUrl` | ```string``` |   |  |
 | `metaData` | ```{ [key: string]: string | null; }``` |   |  |
+| `createdBy` | [```SenderIdentityCreator```](SenderIdentityCreator.md) |   |  |
+| `locale` | ```string``` |   |  |
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

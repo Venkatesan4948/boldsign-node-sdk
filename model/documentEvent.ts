@@ -11,9 +11,11 @@
  */
 
 import { RequestFile } from './models';
+import { BehalfOfWebhookModel } from './behalfOfWebhookModel';
 import { DocumentCcWebhookModel } from './documentCcWebhookModel';
 import { DocumentSender } from './documentSender';
 import { DocumentSignerWebhookModel } from './documentSignerWebhookModel';
+import { GroupSignerSettingsWebhookModel } from './groupSignerSettingsWebhookModel';
 
 export class DocumentEvent {
     'object'?: string | null;
@@ -33,9 +35,16 @@ export class DocumentEvent {
     'errorMessage'?: string | null;
     'labels'?: Array<string> | null;
     'isCombinedAudit'?: boolean;
+    'isCombinedAttachment'?: boolean;
     'brandId'?: string | null;
     'documentDownloadOption'?: string | null;
     'metaData'?: { [key: string]: string | null; } | null;
+    'failedDeliveryMode'?: DocumentEvent.FailedDeliveryModeEnum;
+    'behalfOf'?: BehalfOfWebhookModel;
+    'allowedSignatureTypes'?: Array<DocumentEvent.AllowedSignatureTypesEnum>;
+    'groupSignerSettings'?: GroupSignerSettingsWebhookModel;
+    'enableAllowSignEverywhere'?: boolean | null;
+    'documentTimeZone'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -126,6 +135,11 @@ export class DocumentEvent {
             "type": "boolean"
         },
         {
+            "name": "isCombinedAttachment",
+            "baseName": "isCombinedAttachment",
+            "type": "boolean"
+        },
+        {
             "name": "brandId",
             "baseName": "brandId",
             "type": "string"
@@ -139,6 +153,36 @@ export class DocumentEvent {
             "name": "metaData",
             "baseName": "metaData",
             "type": "{ [key: string]: string | null; }"
+        },
+        {
+            "name": "failedDeliveryMode",
+            "baseName": "failedDeliveryMode",
+            "type": "DocumentEvent.FailedDeliveryModeEnum"
+        },
+        {
+            "name": "behalfOf",
+            "baseName": "behalfOf",
+            "type": "BehalfOfWebhookModel"
+        },
+        {
+            "name": "allowedSignatureTypes",
+            "baseName": "allowedSignatureTypes",
+            "type": "Array<DocumentEvent.AllowedSignatureTypesEnum>"
+        },
+        {
+            "name": "groupSignerSettings",
+            "baseName": "groupSignerSettings",
+            "type": "GroupSignerSettingsWebhookModel"
+        },
+        {
+            "name": "enableAllowSignEverywhere",
+            "baseName": "enableAllowSignEverywhere",
+            "type": "boolean"
+        },
+        {
+            "name": "documentTimeZone",
+            "baseName": "documentTimeZone",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
@@ -155,5 +199,15 @@ export namespace DocumentEvent {
         Revoked = <any> 'Revoked',
         Draft = <any> 'Draft',
         Scheduled = <any> 'Scheduled'
+    }
+    export enum FailedDeliveryModeEnum {
+        Email = <any> 'Email',
+        Sms = <any> 'SMS',
+        WhatsApp = <any> 'WhatsApp'
+    }
+    export enum AllowedSignatureTypesEnum {
+        Text = <any> 'Text',
+        Draw = <any> 'Draw',
+        Image = <any> 'Image'
     }
 }

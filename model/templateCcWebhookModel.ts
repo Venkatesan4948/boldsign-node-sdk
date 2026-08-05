@@ -15,6 +15,7 @@ import { RequestFile } from './models';
 export class TemplateCcWebhookModel {
     'emailAddress'?: string | null;
     'userId'?: string | null;
+    'id'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -27,6 +28,11 @@ export class TemplateCcWebhookModel {
         {
             "name": "userId",
             "baseName": "userId",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "baseName": "id",
             "type": "string"
         }    ];
 

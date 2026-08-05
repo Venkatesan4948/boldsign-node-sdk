@@ -55,7 +55,7 @@ Get Team details.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **teamId** | **string**| Team Id. | |
+| **teamId** | **string**|  | |
 
 ### Return type
 

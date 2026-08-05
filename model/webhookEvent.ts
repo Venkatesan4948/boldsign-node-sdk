@@ -12,12 +12,14 @@
 
 import { RequestFile } from './models';
 import { DocumentEvent } from './documentEvent';
-import { WebhookEventData } from './webhookEventData';
+import { IWebhookData } from './iWebhookData';
+import { WebhookContext } from './webhookContext';
 import { WebhookEventMetadata } from './webhookEventMetadata';
 
 export class WebhookEvent {
     'event'?: WebhookEventMetadata;
-    'data'?: WebhookEventData;
+    'context'?: WebhookContext;
+    'data'?: IWebhookData | null;
     'document'?: DocumentEvent;
 
     static discriminator: string | undefined = undefined;
@@ -29,9 +31,14 @@ export class WebhookEvent {
             "type": "WebhookEventMetadata"
         },
         {
+            "name": "context",
+            "baseName": "context",
+            "type": "WebhookContext"
+        },
+        {
             "name": "data",
             "baseName": "data",
-            "type": "WebhookEventData"
+            "type": "IWebhookData"
         },
         {
             "name": "document",

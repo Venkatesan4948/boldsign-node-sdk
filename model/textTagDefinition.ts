@@ -12,6 +12,8 @@
 
 import { RequestFile } from './models';
 import { AttachmentInfo } from './attachmentInfo';
+import { CollaborationSettings } from './collaborationSettings';
+import { ConditionalRule } from './conditionalRule';
 import { Font } from './font';
 import { FormulaFieldSettings } from './formulaFieldSettings';
 import { ImageInfo } from './imageInfo';
@@ -50,6 +52,9 @@ export class TextTagDefinition {
     'characterLimit'?: number;
     'formulaFieldSettings'?: FormulaFieldSettings;
     'resizeOption'?: TextTagDefinition.ResizeOptionEnum;
+    'collaborationSettings'?: CollaborationSettings;
+    'isMasked'?: boolean | null = false;
+    'conditionalRules'?: Array<ConditionalRule> | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -203,6 +208,21 @@ export class TextTagDefinition {
             "name": "resizeOption",
             "baseName": "resizeOption",
             "type": "TextTagDefinition.ResizeOptionEnum"
+        },
+        {
+            "name": "collaborationSettings",
+            "baseName": "collaborationSettings",
+            "type": "CollaborationSettings"
+        },
+        {
+            "name": "isMasked",
+            "baseName": "isMasked",
+            "type": "boolean"
+        },
+        {
+            "name": "conditionalRules",
+            "baseName": "conditionalRules",
+            "type": "Array<ConditionalRule>"
         }    ];
 
     static getAttributeTypeMap() {
@@ -226,7 +246,8 @@ export namespace TextTagDefinition {
         Dropdown = <any> 'Dropdown',
         Title = <any> 'Title',
         Company = <any> 'Company',
-        Formula = <any> 'Formula'
+        Formula = <any> 'Formula',
+        Drawing = <any> 'Drawing'
     }
     export enum TextAlignEnum {
         Left = <any> 'Left',
@@ -242,7 +263,6 @@ export namespace TextTagDefinition {
         GrowHorizontally = <any> 'GrowHorizontally',
         GrowBoth = <any> 'GrowBoth',
         Fixed = <any> 'Fixed',
-        AutoResizeFont = <any> 'AutoResizeFont',
-        Null = <any> 'null'
+        AutoResizeFont = <any> 'AutoResizeFont'
     }
 }

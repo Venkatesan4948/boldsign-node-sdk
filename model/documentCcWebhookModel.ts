@@ -14,6 +14,7 @@ import { RequestFile } from './models';
 
 export class DocumentCcWebhookModel {
     'emailAddress'?: string | null;
+    'id'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -21,6 +22,11 @@ export class DocumentCcWebhookModel {
         {
             "name": "emailAddress",
             "baseName": "emailAddress",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "baseName": "id",
             "type": "string"
         }    ];
 

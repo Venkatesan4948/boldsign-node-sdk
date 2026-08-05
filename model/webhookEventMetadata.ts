@@ -82,7 +82,13 @@ export namespace WebhookEventMetadata {
         IdentityVerificationSucceeded = <any> 'IdentityVerificationSucceeded',
         IdentityVerificationFailed = <any> 'IdentityVerificationFailed',
         Reminder = <any> 'Reminder',
-        Edited = <any> 'Edited'
+        Edited = <any> 'Edited',
+        EditFailed = <any> 'EditFailed',
+        TemplateEdited = <any> 'TemplateEdited',
+        SignerSaved = <any> 'SignerSaved',
+        KbaInitiated = <any> 'KBAInitiated',
+        KbaSucceeded = <any> 'KBASucceeded',
+        KbaFailed = <any> 'KBAFailed'
     }
     export enum EnvironmentEnum {
         Test = <any> 'Test',

@@ -347,7 +347,7 @@ export class ContactsApi {
     /**
      * 
      * @summary Deletes a contact.
-     * @param id The contact id.
+     * @param id 
      * @param options
      */
     public async deleteContacts (id: string, options: optionsI = {headers: {}}) : Promise<returnTypeI> {
@@ -458,7 +458,7 @@ export class ContactsApi {
     /**
      * 
      * @summary Get summary of the contact.
-     * @param id Contact Id.
+     * @param id 
      * @param options
      */
     public async getContact (id: string, options: optionsI = {headers: {}}) : Promise<ContactsDetails> {
@@ -577,7 +577,7 @@ export class ContactsApi {
     /**
      * 
      * @summary Update the contact.
-     * @param id The contactId.
+     * @param id 
      * @param contactDetails The contact details.
      * @param options
      */

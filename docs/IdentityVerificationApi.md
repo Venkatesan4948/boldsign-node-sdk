@@ -22,7 +22,7 @@ Generate a URL that embeds manual ID verification for the specified document sig
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| The document id. | |
+| **documentId** | **string**|  | |
 | **embeddedFileDetails** | [**EmbeddedFileDetails**](../docs/EmbeddedFileDetails.md)| The embedded verification link request. | [optional] |
 
 ### Return type
@@ -55,7 +55,7 @@ Retrieve the uploaded ID verification document or selfie image for the specified
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| The document id. | |
+| **documentId** | **string**|  | |
 | **downloadImageRequest** | [**DownloadImageRequest**](../docs/DownloadImageRequest.md)| The download image request. | |
 
 ### Return type
@@ -88,7 +88,7 @@ Retrieve the ID verification report for the specified document signer.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| The document id. | |
+| **documentId** | **string**|  | |
 | **verificationDataRequest** | [**VerificationDataRequest**](../docs/VerificationDataRequest.md)| The download image request. | |
 
 ### Return type

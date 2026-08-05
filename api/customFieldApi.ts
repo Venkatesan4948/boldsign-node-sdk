@@ -226,7 +226,7 @@ export class CustomFieldApi {
     /**
      * 
      * @summary List the custom fields respective to the brand id.
-     * @param brandId The brand id.
+     * @param brandId 
      * @param options
      */
     public async customFieldsList (brandId: string, options: optionsI = {headers: {}}) : Promise<CustomFieldCollection> {
@@ -345,7 +345,7 @@ export class CustomFieldApi {
     /**
      * 
      * @summary Delete the custom field.
-     * @param customFieldId The custom field id.
+     * @param customFieldId 
      * @param options
      */
     public async deleteCustomField (customFieldId: string, options: optionsI = {headers: {}}) : Promise<DeleteCustomFieldReply> {
@@ -472,7 +472,7 @@ export class CustomFieldApi {
     /**
      * 
      * @summary Edit the custom field.
-     * @param customFieldId The custom field id.
+     * @param customFieldId 
      * @param brandCustomFieldDetails The custom field details.
      * @param options
      */

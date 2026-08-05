@@ -27,5 +27,10 @@ Name | Type | Description | Notes
 | `onBehalfOf` | ```string``` |   |  |
 | `labels` | ```Array<string>``` |   |  |
 | `templateLabels` | ```Array<string>``` |   |  |
+| `formFieldPermission` | [```FormFieldPermissionWebhookModel```](FormFieldPermissionWebhookModel.md) |   |  |
+| `groupSignerSettings` | [```GroupSignerSettingsWebhookModel```](GroupSignerSettingsWebhookModel.md) |   |  |
+| `behalfOf` | [```BehalfOfWebhookModel```](BehalfOfWebhookModel.md) |   |  |
+| `enableAllowSignEverywhere` | ```boolean``` |   |  |
+| `documentTimeZone` | ```string``` |   |  |
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

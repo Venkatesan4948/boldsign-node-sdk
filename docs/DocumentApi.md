@@ -7,14 +7,19 @@ All URIs are relative to https://api.boldsign.com.
 | [**addAuthentication()**](DocumentApi.md#addAuthentication) | **PATCH** /v1/document/addAuthentication | The add authentication to recipient. |
 | [**addTag()**](DocumentApi.md#addTag) | **PATCH** /v1/document/addTags | Add the Tags in Documents. |
 | [**behalfDocuments()**](DocumentApi.md#behalfDocuments) | **GET** /v1/document/behalfList | Gets the behalf documents. |
+| [**cancelEditing()**](DocumentApi.md#cancelEditing) | **POST** /v1-beta/document/cancelEditing | Cancels editing for a document that is currently in edit-mode. |
 | [**changeAccessCode()**](DocumentApi.md#changeAccessCode) | **PATCH** /v1/document/changeAccessCode | Changes the access code for the given document signer. |
 | [**changeRecipient()**](DocumentApi.md#changeRecipient) | **PATCH** /v1/document/changeRecipient | Change recipient details of a document. |
+| [**createEmbeddedDocumentCloneUrl()**](DocumentApi.md#createEmbeddedDocumentCloneUrl) | **POST** /v1-beta/document/createEmbeddedCloneUrl | Generates a URL to embeds Clone document process into your application. |
+| [**createEmbeddedEditUrl()**](DocumentApi.md#createEmbeddedEditUrl) | **POST** /v1-beta/document/createEmbeddedEditUrl | Generates an embedded edit URL that allows the document editing process to be integrated into your application. |
 | [**createEmbeddedRequestUrlDocument()**](DocumentApi.md#createEmbeddedRequestUrlDocument) | **POST** /v1/document/createEmbeddedRequestUrl | Generates a send URL which embeds document sending process into your application. |
 | [**deleteDocument()**](DocumentApi.md#deleteDocument) | **DELETE** /v1/document/delete | Delete the document. |
 | [**deleteTag()**](DocumentApi.md#deleteTag) | **DELETE** /v1/document/deleteTags | Delete the Tags in Documents. |
 | [**downloadAttachment()**](DocumentApi.md#downloadAttachment) | **GET** /v1/document/downloadAttachment | Download the Attachment. |
 | [**downloadAuditLog()**](DocumentApi.md#downloadAuditLog) | **GET** /v1/document/downloadAuditLog | Download the audit trail document. |
 | [**downloadDocument()**](DocumentApi.md#downloadDocument) | **GET** /v1/document/download | Download the document. |
+| [**draftSend()**](DocumentApi.md#draftSend) | **POST** /v1-beta/document/draftSend | Sends a draft-status document out for signature. |
+| [**editDocument()**](DocumentApi.md#editDocument) | **PUT** /v1-beta/document/edit | Edit and updates an existing document. |
 | [**extendExpiry()**](DocumentApi.md#extendExpiry) | **PATCH** /v1/document/extendExpiry | Extends the expiration date of the document. |
 | [**getProperties()**](DocumentApi.md#getProperties) | **GET** /v1/document/properties | Get summary of the document. |
 | [**getEmbeddedSignLink()**](DocumentApi.md#getEmbeddedSignLink) | **GET** /v1/document/getEmbeddedSignLink | Get sign link for Embedded Sign. |
@@ -40,7 +45,7 @@ The add authentication to recipient.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| The DocumentId. | |
+| **documentId** | **string**|  | |
 | **accessCodeDetail** | [**AccessCodeDetail**](../docs/AccessCodeDetail.md)| Access code details. | [optional] |
 
 ### Return type
@@ -135,6 +140,39 @@ Gets the behalf documents.
 [[Back to Model list]](../README.md#models)
 [[Back to README]](../README.md)
 
+## `cancelEditing()`
+
+```typescript
+cancelEditing(documentId: string, onBehalfOf: string)
+```
+
+Cancels editing for a document that is currently in edit-mode.
+
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **documentId** | **string**|  | |
+| **onBehalfOf** | **string**|  | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
+[[Back to Model list]](../README.md#models)
+[[Back to README]](../README.md)
+
 ## `changeAccessCode()`
 
 ```typescript
@@ -183,7 +221,7 @@ Change recipient details of a document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| The documentID details. | |
+| **documentId** | **string**|  | |
 | **changeRecipient** | [**ChangeRecipient**](../docs/ChangeRecipient.md)| The new recipient details. | |
 
 ### Return type
@@ -198,6 +236,72 @@ void (empty response body)
 
 - **Content-Type**: `application/json;odata.metadata=minimal;odata.streaming=true`, `application/json;odata.metadata=minimal;odata.streaming=false`, `application/json;odata.metadata=minimal`, `application/json;odata.metadata=full;odata.streaming=true`, `application/json;odata.metadata=full;odata.streaming=false`, `application/json;odata.metadata=full`, `application/json;odata.metadata=none;odata.streaming=true`, `application/json;odata.metadata=none;odata.streaming=false`, `application/json;odata.metadata=none`, `application/json;odata.streaming=true`, `application/json;odata.streaming=false`, `application/json`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=full;IEEE754Compatible=false`, `application/json;odata.metadata=full;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=true`, `application/json;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.streaming=false;IEEE754Compatible=true`, `application/json;IEEE754Compatible=false`, `application/json;IEEE754Compatible=true`, `application/xml`, `text/plain`, `application/json-patch+json`, `text/json`, `application/*+json`
 - **Accept**: `application/json;odata.metadata=minimal;odata.streaming=true`, `application/json;odata.metadata=minimal;odata.streaming=false`, `application/json;odata.metadata=minimal`, `application/json;odata.metadata=full;odata.streaming=true`, `application/json;odata.metadata=full;odata.streaming=false`, `application/json;odata.metadata=full`, `application/json;odata.metadata=none;odata.streaming=true`, `application/json;odata.metadata=none;odata.streaming=false`, `application/json;odata.metadata=none`, `application/json;odata.streaming=true`, `application/json;odata.streaming=false`, `application/json`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=minimal;IEEE754Compatible=false`, `application/json;odata.metadata=minimal;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=full;IEEE754Compatible=false`, `application/json;odata.metadata=full;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true`, `application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=false`, `application/json;odata.metadata=none;IEEE754Compatible=true`, `application/json;odata.streaming=true;IEEE754Compatible=false`, `application/json;odata.streaming=true;IEEE754Compatible=true`, `application/json;odata.streaming=false;IEEE754Compatible=false`, `application/json;odata.streaming=false;IEEE754Compatible=true`, `application/json;IEEE754Compatible=false`, `application/json;IEEE754Compatible=true`, `application/xml`, `text/plain`, `application/octet-stream`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
+[[Back to Model list]](../README.md#models)
+[[Back to README]](../README.md)
+
+## `createEmbeddedDocumentCloneUrl()`
+
+```typescript
+createEmbeddedDocumentCloneUrl(documentId: string, embeddedCloneDocumentJsonRequest: EmbeddedCloneDocumentJsonRequest): EmbeddedClonedDocument
+```
+
+Generates a URL to embeds Clone document process into your application.
+
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **documentId** | **string**| The document id. | |
+| **embeddedCloneDocumentJsonRequest** | [**EmbeddedCloneDocumentJsonRequest**](../docs/EmbeddedCloneDocumentJsonRequest.md)| The embedded clone document request body. | [optional] |
+
+### Return type
+
+[**EmbeddedClonedDocument**](../docs/EmbeddedClonedDocument.md)
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
+[[Back to Model list]](../README.md#models)
+[[Back to README]](../README.md)
+
+## `createEmbeddedEditUrl()`
+
+```typescript
+createEmbeddedEditUrl(documentId: string, embeddedDocumentEditJsonRequest: EmbeddedDocumentEditJsonRequest): EmbeddedDocumentEdited
+```
+
+Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **documentId** | **string**| The document id. | |
+| **embeddedDocumentEditJsonRequest** | [**EmbeddedDocumentEditJsonRequest**](../docs/EmbeddedDocumentEditJsonRequest.md)| The embedded edit document request body. | [optional] |
+
+### Return type
+
+[**EmbeddedDocumentEdited**](../docs/EmbeddedDocumentEdited.md)
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
 [[Back to Model list]](../README.md#models)
@@ -248,8 +352,8 @@ Delete the document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
-| **deletePermanently** | **boolean**| Delete Permanently. | [optional] [default to false] |
+| **documentId** | **string**|  | |
+| **deletePermanently** | **boolean**|  | [optional] [default to false] |
 
 ### Return type
 
@@ -313,9 +417,9 @@ Download the Attachment.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
-| **attachmentId** | **string**| Attachment Id(Get attachment ID from Properties API). | |
-| **onBehalfOf** | **string**| The on behalfof email address. | [optional] |
+| **documentId** | **string**|  | |
+| **attachmentId** | **string**|  | |
+| **onBehalfOf** | **string**|  | [optional] |
 
 ### Return type
 
@@ -347,8 +451,8 @@ Download the audit trail document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
-| **onBehalfOf** | **string**| The on behalfof email address. | [optional] |
+| **documentId** | **string**|  | |
+| **onBehalfOf** | **string**|  | [optional] |
 
 ### Return type
 
@@ -370,7 +474,7 @@ Download the audit trail document.
 ## `downloadDocument()`
 
 ```typescript
-downloadDocument(documentId: string, onBehalfOf: string): Buffer
+downloadDocument(documentId: string, onBehalfOf: string, format: 'Combined' | 'Individually'): Buffer
 ```
 
 Download the document.
@@ -380,8 +484,9 @@ Download the document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
-| **onBehalfOf** | **string**| The on behalfof email address. | [optional] |
+| **documentId** | **string**|  | |
+| **onBehalfOf** | **string**|  | [optional] |
+| **format** | **'Combined' | 'Individually'**|  | [optional] |
 
 ### Return type
 
@@ -400,6 +505,71 @@ Download the document.
 [[Back to Model list]](../README.md#models)
 [[Back to README]](../README.md)
 
+## `draftSend()`
+
+```typescript
+draftSend(documentId: string)
+```
+
+Sends a draft-status document out for signature.
+
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **documentId** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
+[[Back to Model list]](../README.md#models)
+[[Back to README]](../README.md)
+
+## `editDocument()`
+
+```typescript
+editDocument(documentId: string, editDocumentRequest: EditDocumentRequest): DocumentEdited
+```
+
+Edit and updates an existing document.
+
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **documentId** | **string**|  | |
+| **editDocumentRequest** | [**EditDocumentRequest**](../docs/EditDocumentRequest.md)| Edit document JSON request. | [optional] |
+
+### Return type
+
+[**DocumentEdited**](../docs/DocumentEdited.md)
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `multipart/form-data`, `application/x-www-form-urlencoded`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
+[[Back to Model list]](../README.md#models)
+[[Back to README]](../README.md)
+
 ## `extendExpiry()`
 
 ```typescript
@@ -413,7 +583,7 @@ Extends the expiration date of the document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
+| **documentId** | **string**|  | |
 | **extendExpiry** | [**ExtendExpiry**](../docs/ExtendExpiry.md)| The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type. | [optional] |
 
 ### Return type
@@ -446,7 +616,7 @@ Get summary of the document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
+| **documentId** | **string**|  | |
 
 ### Return type
 
@@ -559,7 +729,7 @@ Updates the value (prefill) of the fields in the document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| The DocumentId. | |
+| **documentId** | **string**|  | |
 | **prefillFieldRequest** | [**PrefillFieldRequest**](../docs/PrefillFieldRequest.md)| The prefill field request. | |
 
 ### Return type
@@ -592,8 +762,8 @@ Send reminder to pending signers.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
-| **receiverEmails** | [**Array<string>**](../docs/string.md)| Signer emails. | [optional] |
+| **documentId** | **string**|  | |
+| **receiverEmails** | [**Array<string>**](../docs/string.md)|  | [optional] |
 | **reminderMessage** | [**ReminderMessage**](../docs/ReminderMessage.md)| Reminder Message for signers. | [optional] |
 
 ### Return type
@@ -659,7 +829,7 @@ Revoke the document.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **documentId** | **string**| Document Id. | |
+| **documentId** | **string**|  | |
 | **revokeDocument** | [**RevokeDocument**](../docs/RevokeDocument.md)| RevokeDetails. | |
 
 ### Return type

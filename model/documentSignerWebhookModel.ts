@@ -11,14 +11,18 @@
  */
 
 import { RequestFile } from './models';
-import { IdVerification } from './idVerification';
+import { DocumentGroupSignerWebhookModel } from './documentGroupSignerWebhookModel';
+import { IdVerificationSignerWebhookModel } from './idVerificationSignerWebhookModel';
+import { KbaSignerWebhookModel } from './kbaSignerWebhookModel';
 import { PhoneNumberWebhookModel } from './phoneNumberWebhookModel';
-import { SignerAuthenticationSettings } from './signerAuthenticationSettings';
+import { SignerAuthenticationWebhookModel } from './signerAuthenticationWebhookModel';
 
 export class DocumentSignerWebhookModel {
     'signerName'?: string | null;
     'signerRole'?: string | null;
     'signerEmail'?: string | null;
+    'id'?: string | null;
+    'groupSigners'?: Array<DocumentGroupSignerWebhookModel> | null;
     'phoneNumber'?: PhoneNumberWebhookModel;
     'status'?: DocumentSignerWebhookModel.StatusEnum;
     'enableAccessCode'?: boolean;
@@ -28,16 +32,19 @@ export class DocumentSignerWebhookModel {
     'isViewed'?: boolean;
     'order'?: number;
     'signerType'?: string | null;
+    'signType'?: string | null;
+    'groupId'?: string | null;
     'isReassigned'?: boolean;
     'reassignMessage'?: string | null;
     'declineMessage'?: string | null;
     'lastActivityDate'?: Date | null;
     'authenticationType'?: string | null;
-    'idVerification'?: IdVerification;
+    'idVerification'?: IdVerificationSignerWebhookModel;
+    'kba'?: KbaSignerWebhookModel;
     'allowFieldConfiguration'?: boolean;
     'lastReminderSentOn'?: Date | null;
     'authenticationRetryCount'?: number | null;
-    'authenticationSettings'?: SignerAuthenticationSettings;
+    'authenticationSettings'?: SignerAuthenticationWebhookModel;
 
     static discriminator: string | undefined = undefined;
 
@@ -56,6 +63,16 @@ export class DocumentSignerWebhookModel {
             "name": "signerEmail",
             "baseName": "signerEmail",
             "type": "string"
+        },
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
+        },
+        {
+            "name": "groupSigners",
+            "baseName": "groupSigners",
+            "type": "Array<DocumentGroupSignerWebhookModel>"
         },
         {
             "name": "phoneNumber",
@@ -103,6 +120,16 @@ export class DocumentSignerWebhookModel {
             "type": "string"
         },
         {
+            "name": "signType",
+            "baseName": "signType",
+            "type": "string"
+        },
+        {
+            "name": "groupId",
+            "baseName": "groupId",
+            "type": "string"
+        },
+        {
             "name": "isReassigned",
             "baseName": "isReassigned",
             "type": "boolean"
@@ -130,7 +157,12 @@ export class DocumentSignerWebhookModel {
         {
             "name": "idVerification",
             "baseName": "idVerification",
-            "type": "IdVerification"
+            "type": "IdVerificationSignerWebhookModel"
+        },
+        {
+            "name": "kba",
+            "baseName": "kba",
+            "type": "KbaSignerWebhookModel"
         },
         {
             "name": "allowFieldConfiguration",
@@ -150,7 +182,7 @@ export class DocumentSignerWebhookModel {
         {
             "name": "authenticationSettings",
             "baseName": "authenticationSettings",
-            "type": "SignerAuthenticationSettings"
+            "type": "SignerAuthenticationWebhookModel"
         }    ];
 
     static getAttributeTypeMap() {

@@ -20,6 +20,7 @@ import { DocumentReassign } from './documentReassign';
 import { DocumentSenderDetail } from './documentSenderDetail';
 import { DocumentSignerDetails } from './documentSignerDetails';
 import { FormGroup } from './formGroup';
+import { GroupSignerSettings } from './groupSignerSettings';
 import { RecipientNotificationSettings } from './recipientNotificationSettings';
 import { ReminderSettings } from './reminderSettings';
 
@@ -64,6 +65,14 @@ export class DocumentProperties {
     'enableAuditTrailLocalization'?: boolean;
     'downloadFileName'?: string | null;
     'scheduledSendTime'?: number | null;
+    'allowedSignatureTypes'?: Array<DocumentProperties.AllowedSignatureTypesEnum>;
+    'groupSignerSettings'?: GroupSignerSettings;
+    'inEditingMode'?: boolean;
+    'displayStatus'?: string | null;
+    'enableAllowSignEverywhere'?: boolean;
+    'isCombinedAudit'?: boolean;
+    'isCombinedAttachment'?: boolean;
+    'documentTimeZone'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -267,6 +276,46 @@ export class DocumentProperties {
             "name": "scheduledSendTime",
             "baseName": "scheduledSendTime",
             "type": "number"
+        },
+        {
+            "name": "allowedSignatureTypes",
+            "baseName": "allowedSignatureTypes",
+            "type": "Array<DocumentProperties.AllowedSignatureTypesEnum>"
+        },
+        {
+            "name": "groupSignerSettings",
+            "baseName": "groupSignerSettings",
+            "type": "GroupSignerSettings"
+        },
+        {
+            "name": "inEditingMode",
+            "baseName": "inEditingMode",
+            "type": "boolean"
+        },
+        {
+            "name": "displayStatus",
+            "baseName": "displayStatus",
+            "type": "string"
+        },
+        {
+            "name": "enableAllowSignEverywhere",
+            "baseName": "enableAllowSignEverywhere",
+            "type": "boolean"
+        },
+        {
+            "name": "isCombinedAudit",
+            "baseName": "isCombinedAudit",
+            "type": "boolean"
+        },
+        {
+            "name": "isCombinedAttachment",
+            "baseName": "isCombinedAttachment",
+            "type": "boolean"
+        },
+        {
+            "name": "documentTimeZone",
+            "baseName": "documentTimeZone",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
@@ -311,6 +360,12 @@ export namespace DocumentProperties {
     }
     export enum DocumentDownloadOptionEnum {
         Combined = <any> 'Combined',
-        Individually = <any> 'Individually'
+        Individually = <any> 'Individually',
+        UserPreference = <any> 'UserPreference'
+    }
+    export enum AllowedSignatureTypesEnum {
+        Text = <any> 'Text',
+        Draw = <any> 'Draw',
+        Image = <any> 'Image'
     }
 }

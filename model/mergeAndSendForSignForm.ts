@@ -14,6 +14,7 @@ import { RequestFile } from './models';
 import { DocumentCC } from './documentCC';
 import { DocumentInfo } from './documentInfo';
 import { FormGroup } from './formGroup';
+import { GroupSignerSettings } from './groupSignerSettings';
 import { RecipientNotificationSettings } from './recipientNotificationSettings';
 import { ReminderSettings } from './reminderSettings';
 import { Role } from './role';
@@ -49,13 +50,17 @@ export class MergeAndSendForSignForm {
     'roleRemovalIndices'?: Array<number> | null;
     'documentDownloadOption'?: MergeAndSendForSignForm.DocumentDownloadOptionEnum;
     'metaData'?: { [key: string]: string | null; } | null;
-    'recipientNotificationSettings'?: RecipientNotificationSettings;
     'formGroups'?: Array<FormGroup> | null;
     'removeFormFields'?: Array<string> | null;
+    'recipientNotificationSettings'?: RecipientNotificationSettings;
     'enableAuditTrailLocalization'?: boolean | null;
     'downloadFileName'?: string | null;
     'scheduledSendTime'?: number | null;
     'allowScheduledSend'?: boolean = false;
+    'allowedSignatureTypes'?: Array<MergeAndSendForSignForm.AllowedSignatureTypesEnum>;
+    'groupSignerSettings'?: GroupSignerSettings;
+    'enableAllowSignEverywhere'?: boolean | null;
+    'documentTimeZone'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -206,11 +211,6 @@ export class MergeAndSendForSignForm {
             "type": "{ [key: string]: string | null; }"
         },
         {
-            "name": "recipientNotificationSettings",
-            "baseName": "recipientNotificationSettings",
-            "type": "RecipientNotificationSettings"
-        },
-        {
             "name": "formGroups",
             "baseName": "formGroups",
             "type": "Array<FormGroup>"
@@ -219,6 +219,11 @@ export class MergeAndSendForSignForm {
             "name": "removeFormFields",
             "baseName": "removeFormFields",
             "type": "Array<string>"
+        },
+        {
+            "name": "recipientNotificationSettings",
+            "baseName": "recipientNotificationSettings",
+            "type": "RecipientNotificationSettings"
         },
         {
             "name": "enableAuditTrailLocalization",
@@ -239,6 +244,26 @@ export class MergeAndSendForSignForm {
             "name": "allowScheduledSend",
             "baseName": "allowScheduledSend",
             "type": "boolean"
+        },
+        {
+            "name": "allowedSignatureTypes",
+            "baseName": "allowedSignatureTypes",
+            "type": "Array<MergeAndSendForSignForm.AllowedSignatureTypesEnum>"
+        },
+        {
+            "name": "groupSignerSettings",
+            "baseName": "groupSignerSettings",
+            "type": "GroupSignerSettings"
+        },
+        {
+            "name": "enableAllowSignEverywhere",
+            "baseName": "enableAllowSignEverywhere",
+            "type": "boolean"
+        },
+        {
+            "name": "documentTimeZone",
+            "baseName": "documentTimeZone",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {
@@ -250,12 +275,16 @@ export namespace MergeAndSendForSignForm {
     export enum ExpiryDateTypeEnum {
         Days = <any> 'Days',
         Hours = <any> 'Hours',
-        SpecificDateTime = <any> 'SpecificDateTime',
-        Null = <any> 'null'
+        SpecificDateTime = <any> 'SpecificDateTime'
     }
     export enum DocumentDownloadOptionEnum {
         Combined = <any> 'Combined',
         Individually = <any> 'Individually',
-        Null = <any> 'null'
+        UserPreference = <any> 'UserPreference'
+    }
+    export enum AllowedSignatureTypesEnum {
+        Text = <any> 'Text',
+        Draw = <any> 'Draw',
+        Image = <any> 'Image'
     }
 }

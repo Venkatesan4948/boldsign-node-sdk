@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 | `allowMessageEditing` | ```boolean``` |   |  |
 | `allowNewRoles` | ```boolean``` |   |  |
 | `allowNewFiles` | ```boolean``` |   |  |
+| `allowModifyFiles` | ```boolean``` |   |  |
 | `enableReassign` | ```boolean``` |   |  |
 | `enablePrintAndSign` | ```boolean``` |   |  |
 | `enableSigningOrder` | ```boolean``` |   |  |
@@ -25,5 +26,10 @@ Name | Type | Description | Notes
 | `templateLabels` | ```Array<string>``` |   |  |
 | `formGroups` | [```Array<FormGroup>```](FormGroup.md) |   |  |
 | `recipientNotificationSettings` | [```RecipientNotificationSettings```](RecipientNotificationSettings.md) |   |  |
+| `allowedSignatureTypes` | ```Array<string>``` |   |  |
+| `formFieldPermission` | [```FormFieldPermission```](FormFieldPermission.md) |   |  |
+| `groupSignerSettings` | [```GroupSignerSettings```](GroupSignerSettings.md) |   |  |
+| `enableAllowSignEverywhere` | ```boolean``` |   |  |
+| `documentTimeZone` | ```string``` |   |  |
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

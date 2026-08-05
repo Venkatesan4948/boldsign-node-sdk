@@ -13,6 +13,7 @@
 import { RequestFile } from './models';
 import { AuthenticationSettings } from './authenticationSettings';
 import { IdentityVerificationSettings } from './identityVerificationSettings';
+import { KbaSettings } from './kbaSettings';
 import { PhoneNumber } from './phoneNumber';
 
 export class AccessCodeDetail {
@@ -23,6 +24,7 @@ export class AccessCodeDetail {
     'onBehalfOf'?: string | null;
     'phoneNumber'?: PhoneNumber;
     'identityVerificationSettings'?: IdentityVerificationSettings;
+    'kbaSettings'?: KbaSettings;
     'authenticationRetryCount'?: number | null;
     'authenticationSettings'?: AuthenticationSettings;
 
@@ -65,6 +67,11 @@ export class AccessCodeDetail {
             "type": "IdentityVerificationSettings"
         },
         {
+            "name": "kbaSettings",
+            "baseName": "kbaSettings",
+            "type": "KbaSettings"
+        },
+        {
             "name": "authenticationRetryCount",
             "baseName": "authenticationRetryCount",
             "type": "number"
@@ -86,6 +93,7 @@ export namespace AccessCodeDetail {
         EmailOtp = <any> 'EmailOTP',
         AccessCode = <any> 'AccessCode',
         Smsotp = <any> 'SMSOTP',
-        IdVerification = <any> 'IdVerification'
+        IdVerification = <any> 'IdVerification',
+        Kba = <any> 'KBA'
     }
 }

@@ -91,7 +91,7 @@ Deletes a contact.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The contact id. | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -123,7 +123,7 @@ Get summary of the contact.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Contact Id. | |
+| **id** | **string**|  | |
 
 ### Return type
 
@@ -155,7 +155,7 @@ Update the contact.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The contactId. | [optional] |
+| **id** | **string**|  | [optional] |
 | **contactDetails** | [**ContactDetails**](../docs/ContactDetails.md)| The contact details. | [optional] |
 
 ### Return type

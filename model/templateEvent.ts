@@ -11,6 +11,9 @@
  */
 
 import { RequestFile } from './models';
+import { BehalfOfWebhookModel } from './behalfOfWebhookModel';
+import { FormFieldPermissionWebhookModel } from './formFieldPermissionWebhookModel';
+import { GroupSignerSettingsWebhookModel } from './groupSignerSettingsWebhookModel';
 import { TemplateCcWebhookModel } from './templateCcWebhookModel';
 import { TemplateSender } from './templateSender';
 import { TemplateSigner } from './templateSigner';
@@ -37,6 +40,11 @@ export class TemplateEvent {
     'onBehalfOf'?: string | null;
     'labels'?: Array<string> | null;
     'templateLabels'?: Array<string> | null;
+    'formFieldPermission'?: FormFieldPermissionWebhookModel;
+    'groupSignerSettings'?: GroupSignerSettingsWebhookModel;
+    'behalfOf'?: BehalfOfWebhookModel;
+    'enableAllowSignEverywhere'?: boolean | null;
+    'documentTimeZone'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -145,6 +153,31 @@ export class TemplateEvent {
             "name": "templateLabels",
             "baseName": "templateLabels",
             "type": "Array<string>"
+        },
+        {
+            "name": "formFieldPermission",
+            "baseName": "formFieldPermission",
+            "type": "FormFieldPermissionWebhookModel"
+        },
+        {
+            "name": "groupSignerSettings",
+            "baseName": "groupSignerSettings",
+            "type": "GroupSignerSettingsWebhookModel"
+        },
+        {
+            "name": "behalfOf",
+            "baseName": "behalfOf",
+            "type": "BehalfOfWebhookModel"
+        },
+        {
+            "name": "enableAllowSignEverywhere",
+            "baseName": "enableAllowSignEverywhere",
+            "type": "boolean"
+        },
+        {
+            "name": "documentTimeZone",
+            "baseName": "documentTimeZone",
+            "type": "string"
         }    ];
 
     static getAttributeTypeMap() {

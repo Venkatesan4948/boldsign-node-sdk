@@ -45,7 +45,7 @@ List all the brands.
 ## `createBrand()`
 
 ```typescript
-createBrand(brandName: string, brandLogo: RequestFile, backgroundColor: string, buttonColor: string, buttonTextColor: string, emailDisplayName: string, disclaimerDescription: string, disclaimerTitle: string, redirectUrl: string, isDefault: boolean, canHideTagLine: boolean, combineAuditTrail: boolean, excludeAuditTrailFromEmail: boolean, emailSignedDocument: string, documentTimeZone: string, showBuiltInFormFields: boolean, allowCustomFieldCreation: boolean, showSharedCustomFields: boolean, hideDecline: boolean, hideSave: boolean, documentExpirySettingsExpiryDateType: string, documentExpirySettingsExpiryValue: number, documentExpirySettingsEnableDefaultExpiryAlert: boolean, documentExpirySettingsEnableAutoReminder: boolean, documentExpirySettingsReminderDays: number, documentExpirySettingsReminderCount: number, customDomainSettingsDomainName: string, customDomainSettingsFromName: string): BrandCreated
+createBrand(brandName: string, brandLogo: RequestFile, backgroundColor: string, buttonColor: string, buttonTextColor: string, emailDisplayName: string, disclaimerDescription: string, disclaimerTitle: string, redirectUrl: string, isDefault: boolean, canHideTagLine: boolean, combineAuditTrail: boolean, combineAttachments: boolean, excludeAuditTrailFromEmail: boolean, emailSignedDocument: string, documentTimeZone: string, showBuiltInFormFields: boolean, allowCustomFieldCreation: boolean, showSharedCustomFields: boolean, hideDecline: boolean, hideSave: boolean, documentExpirySettingsExpiryDateType: string, documentExpirySettingsExpiryValue: number, documentExpirySettingsEnableDefaultExpiryAlert: boolean, documentExpirySettingsEnableAutoReminder: boolean, documentExpirySettingsReminderDays: number, documentExpirySettingsReminderCount: number, customDomainSettingsDomainName: string, customDomainSettingsFromName: string, signatureFrameSettingsEnableSignatureFrame: boolean, signatureFrameSettingsShowRecipientName: boolean, signatureFrameSettingsShowRecipientEmail: boolean, signatureFrameSettingsShowTimeStamp: boolean, hideReassign: boolean): BrandCreated
 ```
 
 Create the brand.
@@ -67,22 +67,28 @@ Create the brand.
 | **isDefault** | **boolean**|  | [optional] [default to false] |
 | **canHideTagLine** | **boolean**|  | [optional] [default to false] |
 | **combineAuditTrail** | **boolean**|  | [optional] [default to false] |
+| **combineAttachments** | **boolean**|  | [optional] [default to false] |
 | **excludeAuditTrailFromEmail** | **boolean**|  | [optional] [default to false] |
 | **emailSignedDocument** | **string**|  | [optional] [default to &#39;Attachment&#39;] |
 | **documentTimeZone** | **string**|  | [optional] |
 | **showBuiltInFormFields** | **boolean**|  | [optional] [default to true] |
 | **allowCustomFieldCreation** | **boolean**|  | [optional] [default to false] |
 | **showSharedCustomFields** | **boolean**|  | [optional] [default to false] |
-| **hideDecline** | **boolean**|  | [optional] |
-| **hideSave** | **boolean**|  | [optional] |
-| **documentExpirySettingsExpiryDateType** | **string**|  | [optional] |
-| **documentExpirySettingsExpiryValue** | **number**|  | [optional] |
-| **documentExpirySettingsEnableDefaultExpiryAlert** | **boolean**|  | [optional] |
-| **documentExpirySettingsEnableAutoReminder** | **boolean**|  | [optional] |
-| **documentExpirySettingsReminderDays** | **number**|  | [optional] |
-| **documentExpirySettingsReminderCount** | **number**|  | [optional] |
+| **hideDecline** | **boolean**| This option prevents signers to decline the document during the signing process. | [optional] |
+| **hideSave** | **boolean**| This option prevents signers to save their changes during the signing process and continue signing later. | [optional] |
+| **documentExpirySettingsExpiryDateType** | **string**| This property represents the type for the expiry date | [optional] |
+| **documentExpirySettingsExpiryValue** | **number**| This property is used to set the expiry value based on the expiry type | [optional] |
+| **documentExpirySettingsEnableDefaultExpiryAlert** | **boolean**| This property will send the expiry alert email before the day of expiry for the pending signers. | [optional] |
+| **documentExpirySettingsEnableAutoReminder** | **boolean**| When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. | [optional] |
+| **documentExpirySettingsReminderDays** | **number**| Remind in terms of days. | [optional] |
+| **documentExpirySettingsReminderCount** | **number**| Number of reminder count. | [optional] |
 | **customDomainSettingsDomainName** | **string**|  | [optional] |
 | **customDomainSettingsFromName** | **string**|  | [optional] |
+| **signatureFrameSettingsEnableSignatureFrame** | **boolean**|  | [optional] [default to false] |
+| **signatureFrameSettingsShowRecipientName** | **boolean**|  | [optional] [default to false] |
+| **signatureFrameSettingsShowRecipientEmail** | **boolean**|  | [optional] [default to false] |
+| **signatureFrameSettingsShowTimeStamp** | **boolean**|  | [optional] [default to false] |
+| **hideReassign** | **boolean**| Enabling this option disables reassignment for all new documents. This setting cannot be changed during document creation. | [optional] [default to false] |
 
 ### Return type
 
@@ -114,7 +120,7 @@ Delete the brand.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brandId** | **string**| brand Id. | |
+| **brandId** | **string**|  | |
 
 ### Return type
 
@@ -136,7 +142,7 @@ Delete the brand.
 ## `editBrand()`
 
 ```typescript
-editBrand(brandId: string, brandName: string, brandLogo: RequestFile, backgroundColor: string, buttonColor: string, buttonTextColor: string, emailDisplayName: string, disclaimerDescription: string, disclaimerTitle: string, redirectUrl: string, isDefault: boolean, canHideTagLine: boolean, combineAuditTrail: boolean, excludeAuditTrailFromEmail: boolean, emailSignedDocument: string, documentTimeZone: string, showBuiltInFormFields: boolean, allowCustomFieldCreation: boolean, showSharedCustomFields: boolean, hideDecline: boolean, hideSave: boolean, documentExpirySettingsExpiryDateType: string, documentExpirySettingsExpiryValue: number, documentExpirySettingsEnableDefaultExpiryAlert: boolean, documentExpirySettingsEnableAutoReminder: boolean, documentExpirySettingsReminderDays: number, documentExpirySettingsReminderCount: number, customDomainSettingsDomainName: string, customDomainSettingsFromName: string): BrandCreated
+editBrand(brandId: string, brandName: string, brandLogo: RequestFile, backgroundColor: string, buttonColor: string, buttonTextColor: string, emailDisplayName: string, disclaimerDescription: string, disclaimerTitle: string, redirectUrl: string, isDefault: boolean, canHideTagLine: boolean, combineAuditTrail: boolean, combineAttachments: boolean, excludeAuditTrailFromEmail: boolean, emailSignedDocument: string, documentTimeZone: string, showBuiltInFormFields: boolean, allowCustomFieldCreation: boolean, showSharedCustomFields: boolean, hideDecline: boolean, hideSave: boolean, documentExpirySettingsExpiryDateType: string, documentExpirySettingsExpiryValue: number, documentExpirySettingsEnableDefaultExpiryAlert: boolean, documentExpirySettingsEnableAutoReminder: boolean, documentExpirySettingsReminderDays: number, documentExpirySettingsReminderCount: number, customDomainSettingsDomainName: string, customDomainSettingsFromName: string, signatureFrameSettingsEnableSignatureFrame: boolean, signatureFrameSettingsShowRecipientName: boolean, signatureFrameSettingsShowRecipientEmail: boolean, signatureFrameSettingsShowTimeStamp: boolean, hideReassign: boolean): BrandCreated
 ```
 
 Edit the brand.
@@ -146,7 +152,7 @@ Edit the brand.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brandId** | **string**| The brand id. | |
+| **brandId** | **string**|  | |
 | **brandName** | **string**|  | [optional] |
 | **brandLogo** | **RequestFile****RequestFile**|  | [optional] |
 | **backgroundColor** | **string**|  | [optional] |
@@ -159,22 +165,28 @@ Edit the brand.
 | **isDefault** | **boolean**|  | [optional] [default to false] |
 | **canHideTagLine** | **boolean**|  | [optional] [default to false] |
 | **combineAuditTrail** | **boolean**|  | [optional] [default to false] |
+| **combineAttachments** | **boolean**|  | [optional] [default to false] |
 | **excludeAuditTrailFromEmail** | **boolean**|  | [optional] [default to false] |
 | **emailSignedDocument** | **string**|  | [optional] [default to &#39;Attachment&#39;] |
 | **documentTimeZone** | **string**|  | [optional] |
 | **showBuiltInFormFields** | **boolean**|  | [optional] [default to true] |
 | **allowCustomFieldCreation** | **boolean**|  | [optional] [default to false] |
 | **showSharedCustomFields** | **boolean**|  | [optional] [default to false] |
-| **hideDecline** | **boolean**|  | [optional] |
-| **hideSave** | **boolean**|  | [optional] |
-| **documentExpirySettingsExpiryDateType** | **string**|  | [optional] |
-| **documentExpirySettingsExpiryValue** | **number**|  | [optional] |
-| **documentExpirySettingsEnableDefaultExpiryAlert** | **boolean**|  | [optional] |
-| **documentExpirySettingsEnableAutoReminder** | **boolean**|  | [optional] |
-| **documentExpirySettingsReminderDays** | **number**|  | [optional] |
-| **documentExpirySettingsReminderCount** | **number**|  | [optional] |
+| **hideDecline** | **boolean**| This option prevents signers to decline the document during the signing process. | [optional] |
+| **hideSave** | **boolean**| This option prevents signers to save their changes during the signing process and continue signing later. | [optional] |
+| **documentExpirySettingsExpiryDateType** | **string**| This property represents the type for the expiry date | [optional] |
+| **documentExpirySettingsExpiryValue** | **number**| This property is used to set the expiry value based on the expiry type | [optional] |
+| **documentExpirySettingsEnableDefaultExpiryAlert** | **boolean**| This property will send the expiry alert email before the day of expiry for the pending signers. | [optional] |
+| **documentExpirySettingsEnableAutoReminder** | **boolean**| When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders. | [optional] |
+| **documentExpirySettingsReminderDays** | **number**| Remind in terms of days. | [optional] |
+| **documentExpirySettingsReminderCount** | **number**| Number of reminder count. | [optional] |
 | **customDomainSettingsDomainName** | **string**|  | [optional] |
 | **customDomainSettingsFromName** | **string**|  | [optional] |
+| **signatureFrameSettingsEnableSignatureFrame** | **boolean**|  | [optional] [default to false] |
+| **signatureFrameSettingsShowRecipientName** | **boolean**|  | [optional] [default to false] |
+| **signatureFrameSettingsShowRecipientEmail** | **boolean**|  | [optional] [default to false] |
+| **signatureFrameSettingsShowTimeStamp** | **boolean**|  | [optional] [default to false] |
+| **hideReassign** | **boolean**| Enabling this option disables reassignment for all new documents. This setting cannot be changed during document creation. | [optional] [default to false] |
 
 ### Return type
 
@@ -206,7 +218,7 @@ Get the specific brand details.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brandId** | **string**| The brand id. | |
+| **brandId** | **string**|  | |
 
 ### Return type
 
@@ -238,7 +250,7 @@ Reset default brand.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brandId** | **string**| brand Id. | |
+| **brandId** | **string**|  | |
 
 ### Return type
 

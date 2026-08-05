@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 | `onBehalfOf` | ```string``` |   |  |
 | `phoneNumber` | [```PhoneNumber```](PhoneNumber.md) |   |  |
 | `identityVerificationSettings` | [```IdentityVerificationSettings```](IdentityVerificationSettings.md) |   |  |
+| `kbaSettings` | [```KbaSettings```](KbaSettings.md) |   |  |
 | `authenticationRetryCount` | ```number``` |   |  |
 | `authenticationSettings` | [```AuthenticationSettings```](AuthenticationSettings.md) |   |  |
 

@@ -218,7 +218,7 @@ export class TeamsApi {
     /**
      * 
      * @summary Get Team details.
-     * @param teamId Team Id.
+     * @param teamId 
      * @param options
      */
     public async getTeam (teamId: string, options: optionsI = {headers: {}}) : Promise<TeamResponse> {

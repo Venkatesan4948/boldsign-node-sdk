@@ -14,8 +14,10 @@ import { RequestFile } from './models';
 
 export class TemplateSender {
     'name'?: string | null;
+    'teamId'?: string | null;
     'emailAddress'?: string | null;
     'userId'?: string | null;
+    'id'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -26,6 +28,11 @@ export class TemplateSender {
             "type": "string"
         },
         {
+            "name": "teamId",
+            "baseName": "teamId",
+            "type": "string"
+        },
+        {
             "name": "emailAddress",
             "baseName": "emailAddress",
             "type": "string"
@@ -33,6 +40,11 @@ export class TemplateSender {
         {
             "name": "userId",
             "baseName": "userId",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "baseName": "id",
             "type": "string"
         }    ];
 

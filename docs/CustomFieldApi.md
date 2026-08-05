@@ -56,7 +56,7 @@ List the custom fields respective to the brand id.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **brandId** | **string**| The brand id. | |
+| **brandId** | **string**|  | |
 
 ### Return type
 
@@ -88,7 +88,7 @@ Delete the custom field.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customFieldId** | **string**| The custom field id. | |
+| **customFieldId** | **string**|  | |
 
 ### Return type
 
@@ -120,7 +120,7 @@ Edit the custom field.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **customFieldId** | **string**| The custom field id. | |
+| **customFieldId** | **string**|  | |
 | **brandCustomFieldDetails** | [**BrandCustomFieldDetails**](../docs/BrandCustomFieldDetails.md)| The custom field details. | |
 
 ### Return type

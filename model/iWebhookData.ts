@@ -11,17 +11,300 @@
  */
 
 import { RequestFile } from './models';
+import { BehalfOfWebhookModel } from './behalfOfWebhookModel';
+import { DocumentEvent } from './documentEvent';
+import { DocumentSender } from './documentSender';
+import { DocumentSignerWebhookModel } from './documentSignerWebhookModel';
+import { FormFieldPermissionWebhookModel } from './formFieldPermissionWebhookModel';
+import { GroupSignerSettingsWebhookModel } from './groupSignerSettingsWebhookModel';
+import { IdentityVerificationEvent } from './identityVerificationEvent';
+import { KbaAuthenticationEvent } from './kbaAuthenticationEvent';
+import { SenderIdentityCreator } from './senderIdentityCreator';
+import { SenderIdentityEvent } from './senderIdentityEvent';
+import { TemplateCcWebhookModel } from './templateCcWebhookModel';
+import { TemplateEvent } from './templateEvent';
+import { TemplateSigner } from './templateSigner';
 
 export class IWebhookData {
     'object'?: string | null;
+    'documentId'?: string | null;
+    'messageTitle'?: string | null;
+    'documentDescription'?: string | null;
+    'status'?: IWebhookData.StatusEnum;
+    'senderDetail'?: DocumentSender;
+    'signerDetails'?: Array<TemplateSigner> | null;
+    'ccDetails'?: Array<TemplateCcWebhookModel> | null;
+    'onBehalfOf'?: string | null;
+    'createdDate'?: Date | null;
+    'expiryDate'?: Date | null;
+    'enableSigningOrder'?: boolean;
+    'disableEmails'?: boolean;
+    'revokeMessage'?: string | null;
+    'errorMessage'?: string | null;
+    'labels'?: Array<string> | null;
+    'isCombinedAudit'?: boolean;
+    'isCombinedAttachment'?: boolean;
+    'brandId'?: string | null;
+    'documentDownloadOption'?: string | null;
+    'metaData'?: { [key: string]: string | null; } | null;
+    'failedDeliveryMode'?: IWebhookData.FailedDeliveryModeEnum;
+    'behalfOf'?: BehalfOfWebhookModel;
+    'allowedSignatureTypes'?: Array<IWebhookData.AllowedSignatureTypesEnum>;
+    'groupSignerSettings'?: GroupSignerSettingsWebhookModel;
+    'enableAllowSignEverywhere'?: boolean | null;
+    'documentTimeZone'?: string | null;
+    'id'?: string;
+    'name'?: string | null;
+    'email'?: string | null;
+    'modifiedDate'?: Date | null;
+    'approvedDateTime'?: Date | null;
+    'redirectUrl'?: string | null;
+    'createdBy'?: SenderIdentityCreator;
+    'locale'?: string | null;
+    'templateId'?: string | null;
+    'allowNewFiles'?: boolean | null;
+    'allowModifyFiles'?: boolean | null;
+    'activityDate'?: Date | null;
+    'activityBy'?: string | null;
+    'templateName'?: string | null;
+    'templateDescription'?: string | null;
+    'isTemplate'?: boolean = false;
+    'templateLabels'?: Array<string> | null;
+    'formFieldPermission'?: FormFieldPermissionWebhookModel;
+    'signerDetail'?: DocumentSignerWebhookModel;
 
-    static discriminator: string | undefined = undefined;
+    static discriminator: string | undefined = "object";
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
             "name": "object",
             "baseName": "object",
             "type": "string"
+        },
+        {
+            "name": "documentId",
+            "baseName": "documentId",
+            "type": "string"
+        },
+        {
+            "name": "messageTitle",
+            "baseName": "messageTitle",
+            "type": "string"
+        },
+        {
+            "name": "documentDescription",
+            "baseName": "documentDescription",
+            "type": "string"
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "IWebhookData.StatusEnum"
+        },
+        {
+            "name": "senderDetail",
+            "baseName": "senderDetail",
+            "type": "DocumentSender"
+        },
+        {
+            "name": "signerDetails",
+            "baseName": "signerDetails",
+            "type": "Array<TemplateSigner>"
+        },
+        {
+            "name": "ccDetails",
+            "baseName": "ccDetails",
+            "type": "Array<TemplateCcWebhookModel>"
+        },
+        {
+            "name": "onBehalfOf",
+            "baseName": "onBehalfOf",
+            "type": "string"
+        },
+        {
+            "name": "createdDate",
+            "baseName": "createdDate",
+            "type": "Date"
+        },
+        {
+            "name": "expiryDate",
+            "baseName": "expiryDate",
+            "type": "Date"
+        },
+        {
+            "name": "enableSigningOrder",
+            "baseName": "enableSigningOrder",
+            "type": "boolean"
+        },
+        {
+            "name": "disableEmails",
+            "baseName": "disableEmails",
+            "type": "boolean"
+        },
+        {
+            "name": "revokeMessage",
+            "baseName": "revokeMessage",
+            "type": "string"
+        },
+        {
+            "name": "errorMessage",
+            "baseName": "errorMessage",
+            "type": "string"
+        },
+        {
+            "name": "labels",
+            "baseName": "labels",
+            "type": "Array<string>"
+        },
+        {
+            "name": "isCombinedAudit",
+            "baseName": "isCombinedAudit",
+            "type": "boolean"
+        },
+        {
+            "name": "isCombinedAttachment",
+            "baseName": "isCombinedAttachment",
+            "type": "boolean"
+        },
+        {
+            "name": "brandId",
+            "baseName": "brandId",
+            "type": "string"
+        },
+        {
+            "name": "documentDownloadOption",
+            "baseName": "documentDownloadOption",
+            "type": "string"
+        },
+        {
+            "name": "metaData",
+            "baseName": "metaData",
+            "type": "{ [key: string]: string | null; }"
+        },
+        {
+            "name": "failedDeliveryMode",
+            "baseName": "failedDeliveryMode",
+            "type": "IWebhookData.FailedDeliveryModeEnum"
+        },
+        {
+            "name": "behalfOf",
+            "baseName": "behalfOf",
+            "type": "BehalfOfWebhookModel"
+        },
+        {
+            "name": "allowedSignatureTypes",
+            "baseName": "allowedSignatureTypes",
+            "type": "Array<IWebhookData.AllowedSignatureTypesEnum>"
+        },
+        {
+            "name": "groupSignerSettings",
+            "baseName": "groupSignerSettings",
+            "type": "GroupSignerSettingsWebhookModel"
+        },
+        {
+            "name": "enableAllowSignEverywhere",
+            "baseName": "enableAllowSignEverywhere",
+            "type": "boolean"
+        },
+        {
+            "name": "documentTimeZone",
+            "baseName": "documentTimeZone",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "baseName": "email",
+            "type": "string"
+        },
+        {
+            "name": "modifiedDate",
+            "baseName": "modifiedDate",
+            "type": "Date"
+        },
+        {
+            "name": "approvedDateTime",
+            "baseName": "approvedDateTime",
+            "type": "Date"
+        },
+        {
+            "name": "redirectUrl",
+            "baseName": "redirectUrl",
+            "type": "string"
+        },
+        {
+            "name": "createdBy",
+            "baseName": "createdBy",
+            "type": "SenderIdentityCreator"
+        },
+        {
+            "name": "locale",
+            "baseName": "locale",
+            "type": "string"
+        },
+        {
+            "name": "templateId",
+            "baseName": "templateId",
+            "type": "string"
+        },
+        {
+            "name": "allowNewFiles",
+            "baseName": "allowNewFiles",
+            "type": "boolean"
+        },
+        {
+            "name": "allowModifyFiles",
+            "baseName": "allowModifyFiles",
+            "type": "boolean"
+        },
+        {
+            "name": "activityDate",
+            "baseName": "activityDate",
+            "type": "Date"
+        },
+        {
+            "name": "activityBy",
+            "baseName": "activityBy",
+            "type": "string"
+        },
+        {
+            "name": "templateName",
+            "baseName": "templateName",
+            "type": "string"
+        },
+        {
+            "name": "templateDescription",
+            "baseName": "templateDescription",
+            "type": "string"
+        },
+        {
+            "name": "isTemplate",
+            "baseName": "isTemplate",
+            "type": "boolean"
+        },
+        {
+            "name": "templateLabels",
+            "baseName": "templateLabels",
+            "type": "Array<string>"
+        },
+        {
+            "name": "formFieldPermission",
+            "baseName": "formFieldPermission",
+            "type": "FormFieldPermissionWebhookModel"
+        },
+        {
+            "name": "signerDetail",
+            "baseName": "signerDetail",
+            "type": "DocumentSignerWebhookModel"
         }    ];
 
     static getAttributeTypeMap() {
@@ -29,3 +312,24 @@ export class IWebhookData {
     }
 }
 
+export namespace IWebhookData {
+    export enum StatusEnum {
+        InProgress = <any> 'InProgress',
+        Completed = <any> 'Completed',
+        Declined = <any> 'Declined',
+        Expired = <any> 'Expired',
+        Revoked = <any> 'Revoked',
+        Draft = <any> 'Draft',
+        Scheduled = <any> 'Scheduled'
+    }
+    export enum FailedDeliveryModeEnum {
+        Email = <any> 'Email',
+        Sms = <any> 'SMS',
+        WhatsApp = <any> 'WhatsApp'
+    }
+    export enum AllowedSignatureTypesEnum {
+        Text = <any> 'Text',
+        Draw = <any> 'Draw',
+        Image = <any> 'Image'
+    }
+}

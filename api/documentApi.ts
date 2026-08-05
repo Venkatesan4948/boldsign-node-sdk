@@ -15,7 +15,7 @@ import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import {
     ObjectSerializer, Authentication, VoidAuth, Interceptor,
     HttpBasicAuth, HttpBearerAuth, ApiKeyAuth, OAuth, RequestFile, 
-    AccessCodeDetail,AccessCodeDetails,BehalfDocumentRecords,ChangeRecipient,DocumentCreated,DocumentProperties,DocumentRecords,DocumentTags,EmbeddedDocumentRequest,EmbeddedSendCreated,EmbeddedSigningLink,ErrorResult,ExtendExpiry,PrefillFieldRequest,ReminderMessage,RemoveAuthentication,RevokeDocument,SendForSign,TeamDocumentRecords,
+    AccessCodeDetail,AccessCodeDetails,BehalfDocumentRecords,ChangeRecipient,DocumentCreated,DocumentEdited,DocumentProperties,DocumentRecords,DocumentTags,EditDocumentRequest,EmbeddedCloneDocumentJsonRequest,EmbeddedClonedDocument,EmbeddedDocumentEditJsonRequest,EmbeddedDocumentEdited,EmbeddedDocumentRequest,EmbeddedSendCreated,EmbeddedSigningLink,ErrorResult,ExtendExpiry,PrefillFieldRequest,ReminderMessage,RemoveAuthentication,RevokeDocument,SendForSign,TeamDocumentRecords,
 } from '../model';
 
 import {
@@ -94,7 +94,7 @@ export class DocumentApi {
     /**
      * 
      * @summary The add authentication to recipient.
-     * @param documentId The DocumentId.
+     * @param documentId 
      * @param accessCodeDetail Access code details.
      * @param options
      */
@@ -499,6 +499,122 @@ export class DocumentApi {
     }
     /**
      * 
+     * @summary Cancels editing for a document that is currently in edit-mode.
+     * @param documentId 
+     * @param onBehalfOf 
+     * @param options
+     */
+    public async cancelEditing (documentId: string, onBehalfOf?: string, options: optionsI = {headers: {}}) : Promise<returnTypeI> {
+        const localVarPath = this.basePath + '/v1-beta/document/cancelEditing';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams['content-type'] = 'application/json';
+        } else {
+            localVarHeaderParams['content-type'] = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+        let localVarBodyParams: any = undefined;
+
+        // verify required parameter 'documentId' is not null or undefined
+        if (documentId === null || documentId === undefined) {
+            throw new Error('Required parameter documentId was null or undefined when calling cancelEditing.');
+        }
+
+        if (documentId !== undefined) {
+            localVarQueryParameters['documentId'] = ObjectSerializer.serialize(documentId, "string");
+        }
+
+        if (onBehalfOf !== undefined) {
+            localVarQueryParameters['onBehalfOf'] = ObjectSerializer.serialize(onBehalfOf, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let data = {};
+        if (localVarUseFormData) {
+          const formData = toFormData(localVarFormParams);
+          data = formData;
+          localVarHeaderParams = {
+            ...localVarHeaderParams,
+            ...formData.getHeaders(),
+          };
+        }
+
+        let localVarRequestOptions: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            paramsSerializer: this._useQuerystring ? queryParamsSerializer : undefined,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            responseType: "json",
+        };
+
+        if (localVarRequestOptions.method !== 'GET') {
+           localVarRequestOptions.data = data;
+        }
+        let authenticationPromise = Promise.resolve();
+
+        if (this.authentications["X-API-KEY"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["X-API-KEY"].applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications["Bearer"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["Bearer"].applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            return new Promise<returnTypeI>((resolve, reject) => {
+                axios.request(localVarRequestOptions)
+                    .then((response) => {
+                        handleSuccessfulResponse(
+                          resolve,
+                          reject,
+                          response,
+                          
+                        );
+                    }, (error: AxiosError) => {
+                        if (error.response == null) {
+                            reject(error);
+                            return;
+                        }
+
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            400,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            401,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+
+
+                        reject(error);
+                    });
+            });
+        });
+    }
+    /**
+     * 
      * @summary Changes the access code for the given document signer.
      * @param documentId 
      * @param accessCodeDetails The new access code.
@@ -636,7 +752,7 @@ export class DocumentApi {
     /**
      * 
      * @summary Change recipient details of a document.
-     * @param documentId The documentID details.
+     * @param documentId 
      * @param changeRecipient The new recipient details.
      * @param options
      */
@@ -748,6 +864,280 @@ export class DocumentApi {
                             reject,
                             error.response,
                             403,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+
+
+                        reject(error);
+                    });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Generates a URL to embeds Clone document process into your application.
+     * @param documentId The document id.
+     * @param embeddedCloneDocumentJsonRequest The embedded clone document request body.
+     * @param options
+     */
+    public async createEmbeddedDocumentCloneUrl (documentId: string, embeddedCloneDocumentJsonRequest?: EmbeddedCloneDocumentJsonRequest, options: optionsI = {headers: {}}) : Promise<EmbeddedClonedDocument> {
+        embeddedCloneDocumentJsonRequest = deserializeIfNeeded(embeddedCloneDocumentJsonRequest, "EmbeddedCloneDocumentJsonRequest");
+        const localVarPath = this.basePath + '/v1-beta/document/createEmbeddedCloneUrl';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams['content-type'] = 'application/json';
+        } else {
+            localVarHeaderParams['content-type'] = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+        let localVarBodyParams: any = undefined;
+
+        // verify required parameter 'documentId' is not null or undefined
+        if (documentId === null || documentId === undefined) {
+            throw new Error('Required parameter documentId was null or undefined when calling createEmbeddedDocumentCloneUrl.');
+        }
+
+        if (documentId !== undefined) {
+            localVarQueryParameters['documentId'] = ObjectSerializer.serialize(documentId, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        const result = generateFormData(embeddedCloneDocumentJsonRequest, EmbeddedCloneDocumentJsonRequest);
+        localVarUseFormData = result.localVarUseFormData;
+
+        let data = {};
+        if (localVarUseFormData) {
+          const formData = toFormData(result.data);
+          data = formData;
+          localVarHeaderParams = {
+            ...localVarHeaderParams,
+            ...formData.getHeaders(),
+          };
+        } else {
+          data = ObjectSerializer.serialize(
+            embeddedCloneDocumentJsonRequest,
+            "EmbeddedCloneDocumentJsonRequest"
+          );
+        }
+
+        let localVarRequestOptions: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            paramsSerializer: this._useQuerystring ? queryParamsSerializer : undefined,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            responseType: "json",
+        };
+
+        if (localVarRequestOptions.method !== 'GET') {
+           localVarRequestOptions.data = data;
+        }
+        let authenticationPromise = Promise.resolve();
+
+        if (this.authentications["X-API-KEY"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["X-API-KEY"].applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications["Bearer"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["Bearer"].applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            return new Promise<EmbeddedClonedDocument>((resolve, reject) => {
+                axios.request(localVarRequestOptions)
+                    .then((response) => {
+                        handleSuccessfulResponse<EmbeddedClonedDocument>(
+                          resolve,
+                          reject,
+                          response,
+                          "EmbeddedClonedDocument",
+                        );
+                    }, (error: AxiosError) => {
+                        if (error.response == null) {
+                            reject(error);
+                            return;
+                        }
+
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            201,
+                            "EmbeddedClonedDocument",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            401,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            400,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+
+
+                        reject(error);
+                    });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+     * @param documentId The document id.
+     * @param embeddedDocumentEditJsonRequest The embedded edit document request body.
+     * @param options
+     */
+    public async createEmbeddedEditUrl (documentId: string, embeddedDocumentEditJsonRequest?: EmbeddedDocumentEditJsonRequest, options: optionsI = {headers: {}}) : Promise<EmbeddedDocumentEdited> {
+        embeddedDocumentEditJsonRequest = deserializeIfNeeded(embeddedDocumentEditJsonRequest, "EmbeddedDocumentEditJsonRequest");
+        const localVarPath = this.basePath + '/v1-beta/document/createEmbeddedEditUrl';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams['content-type'] = 'application/json';
+        } else {
+            localVarHeaderParams['content-type'] = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+        let localVarBodyParams: any = undefined;
+
+        // verify required parameter 'documentId' is not null or undefined
+        if (documentId === null || documentId === undefined) {
+            throw new Error('Required parameter documentId was null or undefined when calling createEmbeddedEditUrl.');
+        }
+
+        if (documentId !== undefined) {
+            localVarQueryParameters['documentId'] = ObjectSerializer.serialize(documentId, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        const result = generateFormData(embeddedDocumentEditJsonRequest, EmbeddedDocumentEditJsonRequest);
+        localVarUseFormData = result.localVarUseFormData;
+
+        let data = {};
+        if (localVarUseFormData) {
+          const formData = toFormData(result.data);
+          data = formData;
+          localVarHeaderParams = {
+            ...localVarHeaderParams,
+            ...formData.getHeaders(),
+          };
+        } else {
+          data = ObjectSerializer.serialize(
+            embeddedDocumentEditJsonRequest,
+            "EmbeddedDocumentEditJsonRequest"
+          );
+        }
+
+        let localVarRequestOptions: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            paramsSerializer: this._useQuerystring ? queryParamsSerializer : undefined,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            responseType: "json",
+        };
+
+        if (localVarRequestOptions.method !== 'GET') {
+           localVarRequestOptions.data = data;
+        }
+        let authenticationPromise = Promise.resolve();
+
+        if (this.authentications["X-API-KEY"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["X-API-KEY"].applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications["Bearer"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["Bearer"].applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            return new Promise<EmbeddedDocumentEdited>((resolve, reject) => {
+                axios.request(localVarRequestOptions)
+                    .then((response) => {
+                        handleSuccessfulResponse<EmbeddedDocumentEdited>(
+                          resolve,
+                          reject,
+                          response,
+                          "EmbeddedDocumentEdited",
+                        );
+                    }, (error: AxiosError) => {
+                        if (error.response == null) {
+                            reject(error);
+                            return;
+                        }
+
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            201,
+                            "EmbeddedDocumentEdited",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            400,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            401,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            403,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            422,
                             "ErrorResult",
                         )) {
                           return;
@@ -897,8 +1287,8 @@ export class DocumentApi {
     /**
      * 
      * @summary Delete the document.
-     * @param documentId Document Id.
-     * @param deletePermanently Delete Permanently.
+     * @param documentId 
+     * @param deletePermanently 
      * @param options
      */
     public async deleteDocument (documentId: string, deletePermanently?: boolean, options: optionsI = {headers: {}}) : Promise<returnTypeI> {
@@ -1124,9 +1514,9 @@ export class DocumentApi {
     /**
      * 
      * @summary Download the Attachment.
-     * @param documentId Document Id.
-     * @param attachmentId Attachment Id(Get attachment ID from Properties API).
-     * @param onBehalfOf The on behalfof email address.
+     * @param documentId 
+     * @param attachmentId 
+     * @param onBehalfOf 
      * @param options
      */
     public async downloadAttachment (documentId: string, attachmentId: string, onBehalfOf?: string, options: optionsI = {headers: {}}) : Promise<Buffer> {
@@ -1258,8 +1648,8 @@ export class DocumentApi {
     /**
      * 
      * @summary Download the audit trail document.
-     * @param documentId Document Id.
-     * @param onBehalfOf The on behalfof email address.
+     * @param documentId 
+     * @param onBehalfOf 
      * @param options
      */
     public async downloadAuditLog (documentId: string, onBehalfOf?: string, options: optionsI = {headers: {}}) : Promise<Buffer> {
@@ -1382,11 +1772,12 @@ export class DocumentApi {
     /**
      * 
      * @summary Download the document.
-     * @param documentId Document Id.
-     * @param onBehalfOf The on behalfof email address.
+     * @param documentId 
+     * @param onBehalfOf 
+     * @param format 
      * @param options
      */
-    public async downloadDocument (documentId: string, onBehalfOf?: string, options: optionsI = {headers: {}}) : Promise<Buffer> {
+    public async downloadDocument (documentId: string, onBehalfOf?: string, format?: 'Combined' | 'Individually', options: optionsI = {headers: {}}) : Promise<Buffer> {
         const localVarPath = this.basePath + '/v1/document/download';
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
@@ -1411,6 +1802,10 @@ export class DocumentApi {
 
         if (onBehalfOf !== undefined) {
             localVarQueryParameters['onBehalfOf'] = ObjectSerializer.serialize(onBehalfOf, "string");
+        }
+
+        if (format !== undefined) {
+            localVarQueryParameters['format'] = ObjectSerializer.serialize(format, "'Combined' | 'Individually'");
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -1505,8 +1900,264 @@ export class DocumentApi {
     }
     /**
      * 
+     * @summary Sends a draft-status document out for signature.
+     * @param documentId 
+     * @param options
+     */
+    public async draftSend (documentId: string, options: optionsI = {headers: {}}) : Promise<returnTypeI> {
+        const localVarPath = this.basePath + '/v1-beta/document/draftSend';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams['content-type'] = 'application/json';
+        } else {
+            localVarHeaderParams['content-type'] = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+        let localVarBodyParams: any = undefined;
+
+        // verify required parameter 'documentId' is not null or undefined
+        if (documentId === null || documentId === undefined) {
+            throw new Error('Required parameter documentId was null or undefined when calling draftSend.');
+        }
+
+        if (documentId !== undefined) {
+            localVarQueryParameters['documentId'] = ObjectSerializer.serialize(documentId, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let data = {};
+        if (localVarUseFormData) {
+          const formData = toFormData(localVarFormParams);
+          data = formData;
+          localVarHeaderParams = {
+            ...localVarHeaderParams,
+            ...formData.getHeaders(),
+          };
+        }
+
+        let localVarRequestOptions: AxiosRequestConfig = {
+            method: 'POST',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            paramsSerializer: this._useQuerystring ? queryParamsSerializer : undefined,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            responseType: "json",
+        };
+
+        if (localVarRequestOptions.method !== 'GET') {
+           localVarRequestOptions.data = data;
+        }
+        let authenticationPromise = Promise.resolve();
+
+        if (this.authentications["X-API-KEY"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["X-API-KEY"].applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications["Bearer"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["Bearer"].applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            return new Promise<returnTypeI>((resolve, reject) => {
+                axios.request(localVarRequestOptions)
+                    .then((response) => {
+                        handleSuccessfulResponse(
+                          resolve,
+                          reject,
+                          response,
+                          
+                        );
+                    }, (error: AxiosError) => {
+                        if (error.response == null) {
+                            reject(error);
+                            return;
+                        }
+
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            401,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            403,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+
+
+                        reject(error);
+                    });
+            });
+        });
+    }
+    /**
+     * 
+     * @summary Edit and updates an existing document.
+     * @param documentId 
+     * @param editDocumentRequest Edit document JSON request.
+     * @param options
+     */
+    public async editDocument (documentId: string, editDocumentRequest?: EditDocumentRequest, options: optionsI = {headers: {}}) : Promise<DocumentEdited> {
+        editDocumentRequest = deserializeIfNeeded(editDocumentRequest, "EditDocumentRequest");
+        const localVarPath = this.basePath + '/v1-beta/document/edit';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this._defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams['content-type'] = 'application/json';
+        } else {
+            localVarHeaderParams['content-type'] = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+        let localVarBodyParams: any = undefined;
+
+        // verify required parameter 'documentId' is not null or undefined
+        if (documentId === null || documentId === undefined) {
+            throw new Error('Required parameter documentId was null or undefined when calling editDocument.');
+        }
+
+        if (documentId !== undefined) {
+            localVarQueryParameters['documentId'] = ObjectSerializer.serialize(documentId, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        const result = generateFormData(editDocumentRequest, EditDocumentRequest);
+        localVarUseFormData = result.localVarUseFormData;
+
+        let data = {};
+        if (localVarUseFormData) {
+          const formData = toFormData(result.data);
+          data = formData;
+          localVarHeaderParams = {
+            ...localVarHeaderParams,
+            ...formData.getHeaders(),
+          };
+        } else {
+          data = ObjectSerializer.serialize(
+            editDocumentRequest,
+            "EditDocumentRequest"
+          );
+        }
+
+        let localVarRequestOptions: AxiosRequestConfig = {
+            method: 'PUT',
+            params: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            url: localVarPath,
+            paramsSerializer: this._useQuerystring ? queryParamsSerializer : undefined,
+            maxContentLength: Infinity,
+            maxBodyLength: Infinity,
+            responseType: "json",
+        };
+
+        if (localVarRequestOptions.method !== 'GET') {
+           localVarRequestOptions.data = data;
+        }
+        let authenticationPromise = Promise.resolve();
+
+        if (this.authentications["X-API-KEY"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["X-API-KEY"].applyToRequest(localVarRequestOptions));
+        }
+        if (this.authentications["Bearer"].apiKey) {
+            authenticationPromise = authenticationPromise.then(() => this.authentications["Bearer"].applyToRequest(localVarRequestOptions));
+        }
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+
+        let interceptorPromise = authenticationPromise;
+        for (const interceptor of this.interceptors) {
+            interceptorPromise = interceptorPromise.then(() => interceptor(localVarRequestOptions));
+        }
+
+        return interceptorPromise.then(() => {
+            return new Promise<DocumentEdited>((resolve, reject) => {
+                axios.request(localVarRequestOptions)
+                    .then((response) => {
+                        handleSuccessfulResponse<DocumentEdited>(
+                          resolve,
+                          reject,
+                          response,
+                          "DocumentEdited",
+                        );
+                    }, (error: AxiosError) => {
+                        if (error.response == null) {
+                            reject(error);
+                            return;
+                        }
+
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            200,
+                            "DocumentEdited",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            401,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            403,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            400,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+                        if (handleErrorCodeResponse(
+                            reject,
+                            error.response,
+                            422,
+                            "ErrorResult",
+                        )) {
+                          return;
+                        }
+
+
+                        reject(error);
+                    });
+            });
+        });
+    }
+    /**
+     * 
      * @summary Extends the expiration date of the document.
-     * @param documentId Document Id.
+     * @param documentId 
      * @param extendExpiry The new expiry value should be specified in yyyy-MM-dd format for days type, ISO date time format for specific date time and integer for hours type.
      * @param options
      */
@@ -1627,7 +2278,7 @@ export class DocumentApi {
     /**
      * 
      * @summary Get summary of the document.
-     * @param documentId Document Id.
+     * @param documentId 
      * @param options
      */
     public async getProperties (documentId: string, options: optionsI = {headers: {}}) : Promise<DocumentProperties> {
@@ -2061,7 +2712,7 @@ export class DocumentApi {
     /**
      * 
      * @summary Updates the value (prefill) of the fields in the document.
-     * @param documentId The DocumentId.
+     * @param documentId 
      * @param prefillFieldRequest The prefill field request.
      * @param options
      */
@@ -2187,8 +2838,8 @@ export class DocumentApi {
     /**
      * 
      * @summary Send reminder to pending signers.
-     * @param documentId Document Id.
-     * @param receiverEmails Signer emails.
+     * @param documentId 
+     * @param receiverEmails 
      * @param reminderMessage Reminder Message for signers.
      * @param options
      */
@@ -2434,7 +3085,7 @@ export class DocumentApi {
     /**
      * 
      * @summary Revoke the document.
-     * @param documentId Document Id.
+     * @param documentId 
      * @param revokeDocument RevokeDetails.
      * @param options
      */

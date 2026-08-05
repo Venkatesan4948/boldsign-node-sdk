@@ -15,6 +15,8 @@ import { RequestFile } from './models';
 export class DocumentSender {
     'name'?: string | null;
     'emailAddress'?: string | null;
+    'userId'?: string | null;
+    'teamId'?: string | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -27,6 +29,16 @@ export class DocumentSender {
         {
             "name": "emailAddress",
             "baseName": "emailAddress",
+            "type": "string"
+        },
+        {
+            "name": "userId",
+            "baseName": "userId",
+            "type": "string"
+        },
+        {
+            "name": "teamId",
+            "baseName": "teamId",
             "type": "string"
         }    ];
 

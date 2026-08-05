@@ -12,7 +12,9 @@
 
 import { RequestFile } from './models';
 import { AttachmentInfo } from './attachmentInfo';
+import { CheckboxValidationSettings } from './checkboxValidationSettings';
 import { EditableDateFieldSettings } from './editableDateFieldSettings';
+import { GroupOption } from './groupOption';
 import { ImageInfo } from './imageInfo';
 
 export class CustomFormField {
@@ -24,6 +26,8 @@ export class CustomFormField {
     'value'?: string | null;
     'fontSize'?: number = 13;
     'font'?: CustomFormField.FontEnum;
+    'groupOptions'?: Array<GroupOption> | null;
+    'checkboxValidationSettings'?: CheckboxValidationSettings;
     'fontHexColor'?: string | null;
     'isBoldFont'?: boolean;
     'isItalicFont'?: boolean;
@@ -49,6 +53,7 @@ export class CustomFormField {
     'restrictIdPrefixChange'?: boolean = false;
     'backgroundHexColor'?: string | null;
     'resizeOption'?: CustomFormField.ResizeOptionEnum;
+    'isMasked'?: boolean | null = false;
 
     static discriminator: string | undefined = undefined;
 
@@ -92,6 +97,16 @@ export class CustomFormField {
             "name": "font",
             "baseName": "font",
             "type": "CustomFormField.FontEnum"
+        },
+        {
+            "name": "groupOptions",
+            "baseName": "groupOptions",
+            "type": "Array<GroupOption>"
+        },
+        {
+            "name": "checkboxValidationSettings",
+            "baseName": "checkboxValidationSettings",
+            "type": "CheckboxValidationSettings"
         },
         {
             "name": "fontHexColor",
@@ -217,6 +232,11 @@ export class CustomFormField {
             "name": "resizeOption",
             "baseName": "resizeOption",
             "type": "CustomFormField.ResizeOptionEnum"
+        },
+        {
+            "name": "isMasked",
+            "baseName": "isMasked",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {
@@ -240,13 +260,15 @@ export namespace CustomFormField {
         Dropdown = <any> 'Dropdown',
         Title = <any> 'Title',
         Company = <any> 'Company',
-        Formula = <any> 'Formula'
+        Formula = <any> 'Formula',
+        Drawing = <any> 'Drawing'
     }
     export enum FontEnum {
         Helvetica = <any> 'Helvetica',
         Courier = <any> 'Courier',
         TimesRoman = <any> 'TimesRoman',
-        NotoSans = <any> 'NotoSans'
+        NotoSans = <any> 'NotoSans',
+        Carlito = <any> 'Carlito'
     }
     export enum ValidationTypeEnum {
         None = <any> 'None',
@@ -269,7 +291,6 @@ export namespace CustomFormField {
         GrowHorizontally = <any> 'GrowHorizontally',
         GrowBoth = <any> 'GrowBoth',
         Fixed = <any> 'Fixed',
-        AutoResizeFont = <any> 'AutoResizeFont',
-        Null = <any> 'null'
+        AutoResizeFont = <any> 'AutoResizeFont'
     }
 }

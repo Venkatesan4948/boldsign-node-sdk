@@ -12,6 +12,7 @@
 
 import { RequestFile } from './models';
 import { AttachmentInfo } from './attachmentInfo';
+import { CollaborationSettings } from './collaborationSettings';
 import { ConditionalRule } from './conditionalRule';
 import { EditableDateFieldSettings } from './editableDateFieldSettings';
 import { FormulaFieldSettings } from './formulaFieldSettings';
@@ -59,6 +60,9 @@ export class FormField {
     'resizeOption'?: FormField.ResizeOptionEnum;
     'allowEditFormField'?: boolean | null;
     'allowDeleteFormField'?: boolean | null;
+    'collaborationSettings'?: CollaborationSettings;
+    'isMasked'?: boolean | null = false;
+    'isDefaultValueRequired'?: boolean | null;
 
     static discriminator: string | undefined = undefined;
 
@@ -262,6 +266,21 @@ export class FormField {
             "name": "allowDeleteFormField",
             "baseName": "allowDeleteFormField",
             "type": "boolean"
+        },
+        {
+            "name": "collaborationSettings",
+            "baseName": "collaborationSettings",
+            "type": "CollaborationSettings"
+        },
+        {
+            "name": "isMasked",
+            "baseName": "isMasked",
+            "type": "boolean"
+        },
+        {
+            "name": "isDefaultValueRequired",
+            "baseName": "isDefaultValueRequired",
+            "type": "boolean"
         }    ];
 
     static getAttributeTypeMap() {
@@ -285,13 +304,15 @@ export namespace FormField {
         Dropdown = <any> 'Dropdown',
         Title = <any> 'Title',
         Company = <any> 'Company',
-        Formula = <any> 'Formula'
+        Formula = <any> 'Formula',
+        Drawing = <any> 'Drawing'
     }
     export enum FontEnum {
         Helvetica = <any> 'Helvetica',
         Courier = <any> 'Courier',
         TimesRoman = <any> 'TimesRoman',
-        NotoSans = <any> 'NotoSans'
+        NotoSans = <any> 'NotoSans',
+        Carlito = <any> 'Carlito'
     }
     export enum ValidationTypeEnum {
         None = <any> 'None',
@@ -314,7 +335,6 @@ export namespace FormField {
         GrowHorizontally = <any> 'GrowHorizontally',
         GrowBoth = <any> 'GrowBoth',
         Fixed = <any> 'Fixed',
-        AutoResizeFont = <any> 'AutoResizeFont',
-        Null = <any> 'null'
+        AutoResizeFont = <any> 'AutoResizeFont'
     }
 }

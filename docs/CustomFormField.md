@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 | `value` | ```string``` |   |  |
 | `fontSize` | ```number``` |   |  [default to 13] |
 | `font` | ```string``` |   |  |
+| `groupOptions` | [```Array<GroupOption>```](GroupOption.md) |   |  |
+| `checkboxValidationSettings` | [```CheckboxValidationSettings```](CheckboxValidationSettings.md) |   |  |
 | `fontHexColor` | ```string``` |   |  |
 | `isBoldFont` | ```boolean``` |   |  |
 | `isItalicFont` | ```boolean``` |   |  |
@@ -39,5 +41,6 @@ Name | Type | Description | Notes
 | `restrictIdPrefixChange` | ```boolean``` |   |  [default to false] |
 | `backgroundHexColor` | ```string``` |   |  |
 | `resizeOption` | ```string``` |   |  |
+| `isMasked` | ```boolean``` |   |  [default to false] |
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

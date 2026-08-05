@@ -12,11 +12,13 @@
 
 import { RequestFile } from './models';
 import { PhoneNumberWebhookModel } from './phoneNumberWebhookModel';
+import { TemplateGroupSignerWebhookModel } from './templateGroupSignerWebhookModel';
 
 export class TemplateSigner {
     'signerName'?: string | null;
     'signerRole'?: string | null;
     'signerEmail'?: string | null;
+    'groupSigners'?: Array<TemplateGroupSignerWebhookModel> | null;
     'phoneNumber'?: PhoneNumberWebhookModel;
     'enableAccessCode'?: boolean;
     'enableEmailOTP'?: boolean;
@@ -24,11 +26,14 @@ export class TemplateSigner {
     'userId'?: string | null;
     'order'?: number;
     'signerType'?: string | null;
+    'signType'?: string | null;
+    'groupId'?: string | null;
     'hostEmail'?: string | null;
     'hostName'?: string | null;
     'hostUserId'?: string | null;
     'imposeAuthentication'?: string | null;
     'allowFieldConfiguration'?: boolean;
+    'roleIndex'?: number;
 
     static discriminator: string | undefined = undefined;
 
@@ -47,6 +52,11 @@ export class TemplateSigner {
             "name": "signerEmail",
             "baseName": "signerEmail",
             "type": "string"
+        },
+        {
+            "name": "groupSigners",
+            "baseName": "groupSigners",
+            "type": "Array<TemplateGroupSignerWebhookModel>"
         },
         {
             "name": "phoneNumber",
@@ -84,6 +94,16 @@ export class TemplateSigner {
             "type": "string"
         },
         {
+            "name": "signType",
+            "baseName": "signType",
+            "type": "string"
+        },
+        {
+            "name": "groupId",
+            "baseName": "groupId",
+            "type": "string"
+        },
+        {
             "name": "hostEmail",
             "baseName": "hostEmail",
             "type": "string"
@@ -107,6 +127,11 @@ export class TemplateSigner {
             "name": "allowFieldConfiguration",
             "baseName": "allowFieldConfiguration",
             "type": "boolean"
+        },
+        {
+            "name": "roleIndex",
+            "baseName": "roleIndex",
+            "type": "number"
         }    ];
 
     static getAttributeTypeMap() {

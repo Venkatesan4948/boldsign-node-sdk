@@ -6,6 +6,7 @@ All URIs are relative to https://api.boldsign.com.
 | ------------- | ------------- | ------------- |
 | [**createSenderIdentities()**](SenderIdentitiesApi.md#createSenderIdentities) | **POST** /v1/senderIdentities/create | Creates sender identity. |
 | [**deleteSenderIdentities()**](SenderIdentitiesApi.md#deleteSenderIdentities) | **DELETE** /v1/senderIdentities/delete | Deletes sender identity. |
+| [**getSenderIdentityProperties()**](SenderIdentitiesApi.md#getSenderIdentityProperties) | **GET** /v1/senderIdentities/properties | Gets sender identity by ID or email. |
 | [**listSenderIdentities()**](SenderIdentitiesApi.md#listSenderIdentities) | **GET** /v1/senderIdentities/list | Lists sender identity. |
 | [**reRequestSenderIdentities()**](SenderIdentitiesApi.md#reRequestSenderIdentities) | **POST** /v1/senderIdentities/rerequest | Rerequests denied sender identity. |
 | [**resendInvitationSenderIdentities()**](SenderIdentitiesApi.md#resendInvitationSenderIdentities) | **POST** /v1/senderIdentities/resendInvitation | Resends sender identity invitation. |
@@ -57,11 +58,44 @@ Deletes sender identity.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[X-API-KEY](../README.md#X-API-KEY), [Bearer](../README.md#Bearer)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints)
+[[Back to Model list]](../README.md#models)
+[[Back to README]](../README.md)
+
+## `getSenderIdentityProperties()`
+
+```typescript
+getSenderIdentityProperties(id: string, email: string): SenderIdentityViewModel
+```
+
+Gets sender identity by ID or email.
+
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**|  | [optional] |
+| **email** | **string**|  | [optional] |
+
+### Return type
+
+[**SenderIdentityViewModel**](../docs/SenderIdentityViewModel.md)
 
 ### Authorization
 
@@ -124,7 +158,7 @@ Rerequests denied sender identity.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 
 ### Return type
 
@@ -156,7 +190,7 @@ Resends sender identity invitation.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 
 ### Return type
 
@@ -188,7 +222,7 @@ Updates sender identity.
 
 |Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **email** | **string**| The email address. | |
+| **email** | **string**|  | |
 | **editSenderIdentityRequest** | [**EditSenderIdentityRequest**](../docs/EditSenderIdentityRequest.md)| The create sender identity request. | |
 
 ### Return type
